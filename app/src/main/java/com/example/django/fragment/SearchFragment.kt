@@ -1,4 +1,4 @@
-package com.example.django.Fragment
+package com.example.django.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,19 +7,20 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.django.R
-import com.example.django.databinding.FragmentLoginBinding
+import com.example.django.databinding.FragmentSearchBinding
 
-class LoginFragment : Fragment() {
+class SearchFragment : Fragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
 
-        activity?.setTitle("Login")
-        val binding: FragmentLoginBinding = DataBindingUtil.inflate(
+        activity?.setTitle("Search")
+        val binding: FragmentSearchBinding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_login, container, false
+            R.layout.fragment_search, container, false
         )
         return binding.root
     }

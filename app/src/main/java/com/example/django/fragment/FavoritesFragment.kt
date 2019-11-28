@@ -1,4 +1,4 @@
-package com.example.django.Fragment
+package com.example.django.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.django.R
-import com.example.django.databinding.FragmentSearchBinding
+import com.example.django.databinding.FragmentFavoritesBinding
 
-class SearchFragment : Fragment() {
+class FavoritesFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -17,10 +17,10 @@ class SearchFragment : Fragment() {
     ): View? {
 
 
-        activity?.setTitle("Search")
-        val binding: FragmentSearchBinding = DataBindingUtil.inflate(
+        activity?.setTitle("Favorites")
+        val binding: FragmentFavoritesBinding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_search, container, false
+            R.layout.fragment_favorites, container, false
         )
         return binding.root
     }

@@ -1,4 +1,4 @@
-package com.example.django.Fragment
+package com.example.django.fragment
 
 import androidx.fragment.app.Fragment
 import android.os.Bundle
