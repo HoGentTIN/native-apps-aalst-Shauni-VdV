@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingTop="12dp"
-        tools:context=".main.MainActivity">
+        tools:context=".ui.main.MainActivity">
 
 
         <!-- Voorlopige titel -->
