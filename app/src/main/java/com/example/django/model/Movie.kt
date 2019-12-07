@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
-@Entity(tableName = "movie")
+@Entity(tableName = "movie_table")
 data class Movie(
     @PrimaryKey(autoGenerate = false)
     val id: String,
