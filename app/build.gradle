@@ -24,6 +24,12 @@ android {
         }
     }
 
+    applicationVariants.all{
+        buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/\"")
+        buildConfigField("String", "API_KEY", "\"1db8f6ebe89295a86017d0bfe634af7b\"")
+
+    }
+
     dataBinding {
         enabled = true
     }

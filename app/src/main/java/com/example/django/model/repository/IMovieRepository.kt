@@ -4,9 +4,6 @@ import com.example.django.model.Movie
 
 interface IMovieRepository {
 
-    suspend fun loadAllMovies()
 
-    suspend fun addMoviesToDatabase(movies: List<Movie>)
-
-    suspend fun getAll(): List<Movie>
+    suspend fun getDiscover(): List<Movie>
 }

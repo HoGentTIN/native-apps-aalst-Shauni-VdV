@@ -27,7 +27,7 @@ class DiscoverFragment : Fragment() {
             R.layout.fragment_discover, container, false
         )
 
-        viewModel = ViewModelProviders.of(this, DiscoverViewModelFactory()).get(DiscoverViewModel::class.java))
+       // viewModel = ViewModelProviders.of(this, DiscoverViewModelFactory()).get(DiscoverViewModel::class.java))
         return binding.root
     }
 }

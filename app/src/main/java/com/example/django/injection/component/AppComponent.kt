@@ -3,6 +3,7 @@ package com.example.django.injection.component
 import com.example.django.App
 import com.example.django.injection.module.DatabaseModule
 import com.example.django.injection.module.NetworkModule
+import com.example.django.model.repository.MovieRepository
 import com.example.django.ui.fragment.Discover.DiscoverViewModel
 import dagger.Component
 import javax.inject.Singleton
