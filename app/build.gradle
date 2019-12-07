@@ -42,6 +42,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
@@ -68,5 +69,7 @@ dependencies {
 
     /* ANKO */
     implementation "org.jetbrains.anko:anko:0.10.8"
+    implementation 'androidx.room:room-runtime:2.2.2'
+    annotationProcessor 'androidx.room:room-compiler:2.2.2'
 
 }

@@ -3,11 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     tools:ignore="ExtraText">
 
-
-    <item
-        android:id="@+id/homeFragment"
-        android:title="@string/navbar_home" />
-
     <item
         android:id="@+id/discoverFragment"
         android:title="@string/navbar_discover" />
