@@ -52,22 +52,14 @@ class DiscoverViewModel: ViewModel() {
 
     fun getMovies(){
 
-      /*  coroutineScope.launch{
-            var getPropertiesDeferred = movieService.getDiscoverMovies()
-            try{
-                _status.value = ApiStatus.LOADING
-                var result = getPropertiesDeferred.await()
-                _discoverMovies.value = result
-                _status.value = ApiStatus.DONE
-            }catch (e: Exception){
-                _status.value = ApiStatus.ERROR
-                _discoverMovies.value = ArrayList()
-            }
-        }*/
-        viewModelScope.launch {
-            _discoverMovies.value = movieService.getDiscoverMovies().results
+       viewModelScope.launch {
+           var any = movieService.getDiscoverMovies()
+           Log.i("response", any.toString())
+           Log.i("list", any.results.toString())
+           _discoverMovies.value = any.results
 
-        }
+       }
+
 
     }
 

@@ -30,4 +30,9 @@ data class Movie(
     val vote_average: Double? = null,
     val vote_count: Int? = null,
     val isFavorite: Boolean? = false
-    ): Parcelable
+    ): Parcelable {
+
+    fun getImg() : String {
+        return "https://image.tmdb.org/t/p/w500/" + poster_path
+    }
+}

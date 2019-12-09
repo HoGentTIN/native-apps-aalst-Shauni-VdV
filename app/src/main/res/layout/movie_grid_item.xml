@@ -9,11 +9,10 @@
     </data>
     <ImageView
         android:id="@+id/movie_poster"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:scaleType="centerCrop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:padding="2dp"
-        app:imageUrl="@{property.poster_path}"
+        app:imageUrl="@{property.getImg()}"
         tools:src="@tools:sample/backgrounds/scenic"/>
 </layout>
