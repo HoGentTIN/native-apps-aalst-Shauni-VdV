@@ -14,6 +14,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
 import javax.inject.Inject
+import kotlinx.coroutines.Deferred
+
 
 class MovieRepository(context : Context) : IMovieRepository {
 
@@ -27,8 +29,8 @@ class MovieRepository(context : Context) : IMovieRepository {
     private val movieDatabase = MovieDatabase.getInstance(context)
     private val movieDao: MovieDatabaseDao = movieDatabase.movieDao
 
-    override suspend fun getMovieList(hashMap: HashMap<String, String>): MovieListResponse {
-        return movieService.getDiscoverMovies(hashMap)
+    override suspend fun getMovieList(): Deferred<List<Movie>>{
+        return movieService.getDiscoverMovies()
     }
 
     override suspend fun insertMovieDatabase(list: List<Movie>) {

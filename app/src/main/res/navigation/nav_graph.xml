@@ -4,20 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/discoverFragment">
+
     <fragment
         android:id="@+id/discoverFragment"
-        android:name="com.example.django.ui.fragment.Discover.DiscoverFragment"
-        android:label="DiscoverFragment" />
+        android:name="com.example.django.ui.fragment.discover.DiscoverFragment"
+        android:label="DiscoverFragment" >
+        <action
+            android:id="@+id/showDetail"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.django.ui.fragment.LoginFragment"
         android:label="LoginFragment" />
+
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.django.ui.fragment.FavoritesFragment"
         android:label="FavoritesFragment" />
+
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.django.ui.fragment.SearchFragment"
         android:label="SearchFragment" />
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.django.ui.fragment.detail.DetailFragment"
+        android:label="DetailFragment">
+        <argument
+            android:name="selectedMovie"
+            app:argType="com.example.django.model.Movie"
+            />
+    </fragment>
+
 </navigation>

@@ -3,6 +3,7 @@ package com.example.django.model.repository
 
 import com.example.django.model.Movie
 import com.example.django.network.response.MovieListResponse
+import kotlinx.coroutines.Deferred
 
 interface IMovieRepository {
 
@@ -11,9 +12,7 @@ interface IMovieRepository {
      * API related functions
      *
      */
-    suspend fun getMovieList(
-        hashMap: HashMap<String, String> = HashMap()
-    ): MovieListResponse
+    suspend fun getMovieList(): Deferred<List<Movie>>
 
     suspend fun insertMovieDatabase(
         list: List<Movie>

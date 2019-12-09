@@ -1,9 +1,11 @@
 package com.example.django.model
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName = "movie_table")
 data class Movie(
     @PrimaryKey(autoGenerate = false)
@@ -28,4 +30,4 @@ data class Movie(
     val vote_average: Double? = null,
     val vote_count: Int? = null,
     val isFavorite: Boolean? = false
-    )
+    ): Parcelable
