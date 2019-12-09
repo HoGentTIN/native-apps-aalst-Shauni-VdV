@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.django.App
 import com.example.django.model.Movie
 import com.example.django.model.repository.IMovieRepository
@@ -46,18 +47,12 @@ class DiscoverViewModel: ViewModel() {
     val navigateToSelectedMovie: LiveData<Movie>
         get() = _navigateToSelectedMovie
 
-
-
-
-
-    private lateinit var job: Job
-
     private var viewModelJob= Job()
     private val coroutineScope= CoroutineScope(viewModelJob + Dispatchers.Main)
 
     fun getMovies(){
 
-        coroutineScope.launch{
+      /*  coroutineScope.launch{
             var getPropertiesDeferred = movieService.getDiscoverMovies()
             try{
                 _status.value = ApiStatus.LOADING
@@ -68,13 +63,17 @@ class DiscoverViewModel: ViewModel() {
                 _status.value = ApiStatus.ERROR
                 _discoverMovies.value = ArrayList()
             }
+        }*/
+        viewModelScope.launch {
+            _discoverMovies.value = movieService.getDiscoverMovies().results
+
         }
 
     }
 
     override fun onCleared() {
         super.onCleared()
-        job.cancel()
+        viewModelJob.cancel()
     }
 
     fun displayMovieDetails(movie: Movie) {

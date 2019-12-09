@@ -29,7 +29,7 @@ class MovieRepository(context : Context) : IMovieRepository {
     private val movieDatabase = MovieDatabase.getInstance(context)
     private val movieDao: MovieDatabaseDao = movieDatabase.movieDao
 
-    override suspend fun getMovieList(): Deferred<List<Movie>>{
+    override suspend fun getMovieList(): MovieListResponse{
         return movieService.getDiscoverMovies()
     }
 
