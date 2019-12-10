@@ -27,6 +27,8 @@ class DiscoverFragment : Fragment() {
         val binding : FragmentDiscoverBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_discover, container, false)
         //val binding = FragmentDiscoverBinding.inflate(inflater)
 
+        activity?.setTitle("Discover")
+
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.lifecycleOwner = this
 
