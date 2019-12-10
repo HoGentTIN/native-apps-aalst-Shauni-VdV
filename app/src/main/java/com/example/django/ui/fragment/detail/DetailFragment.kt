@@ -15,8 +15,7 @@ class DetailFragment : Fragment() {
         val application = requireNotNull(activity).application
         val binding = FragmentMovieDetailBinding.inflate(inflater)
         binding.setLifecycleOwner(this)
-        lateinit var movie : Movie
-       // val movie = DetailFragmentArgs.fromBundle(arguments!!).selectedProperty
+        val movie = DetailFragmentArgs.fromBundle(arguments!!).selectedMovie
         val viewModelFactory = DetailViewModelFactory(movie, application)
         binding.viewModel = ViewModelProviders.of(
             this, viewModelFactory).get(DetailViewModel::class.java)

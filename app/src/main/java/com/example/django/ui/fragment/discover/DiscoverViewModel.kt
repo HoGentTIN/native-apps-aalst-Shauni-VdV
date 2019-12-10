@@ -13,6 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import javax.inject.Inject
 
 
@@ -22,7 +23,10 @@ class DiscoverViewModel: ViewModel() {
 
     init {
         App.appComponent.inject(this)
+        Log.d("ViewModel", "passed init before getMovies()")
+
         getMovies()
+        Log.d("ViewModel", "passed init after getMovies()")
     }
 
     enum class ApiStatus { LOADING, ERROR, DONE }
@@ -47,18 +51,35 @@ class DiscoverViewModel: ViewModel() {
     val navigateToSelectedMovie: LiveData<Movie>
         get() = _navigateToSelectedMovie
 
-    private var viewModelJob= Job()
-    private val coroutineScope= CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    fun getMovies(){
 
+    private var viewModelJob = Job()
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+
+
+    private fun getMovies(){
+
+        Log.d("ViewModel", "GetMovies called")
        viewModelScope.launch {
            var any = movieService.getDiscoverMovies()
            Log.i("response", any.toString())
            Log.i("list", any.results.toString())
            _discoverMovies.value = any.results
-
        }
+
+        /*
+        coroutineScope.launch {
+            var getMoviesDeferred = movieService.getDiscoverMovies()
+            try{
+                _status.value = ApiStatus.LOADING
+                val listResult = getMoviesDeferred.results
+                _status.value = ApiStatus.DONE
+                _discoverMovies.value = listResult
+            } catch(e : Exception){
+                _status.value = ApiStatus.ERROR
+                _discoverMovies.value = ArrayList()
+            }
+        } */
 
 
     }

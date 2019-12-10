@@ -26,13 +26,4 @@ class DetailViewModel(movie: Movie, app: Application) : AndroidViewModel(app) {
         _selectedMovie.value = movie
     }
 
-    val displayTitle = Transformations.map(selectedMovie) {
-        app.applicationContext.getString(it.title?.toInt()!!)
-
-    }
-
-    val displayYear = Transformations.map(selectedMovie) {
-        app.applicationContext.getString(
-            it.release_date?.toInt()!!)
-    }
 }
