@@ -25,8 +25,11 @@ class DiscoverViewModel: ViewModel() {
         App.appComponent.inject(this)
         Log.d("ViewModel", "passed init before getMovies()")
 
-        getMovies()
-        Log.d("ViewModel", "passed init after getMovies()")
+        getPopularMovies()
+        Log.d("ViewModel", "passed init after getPopularMovies()")
+
+        getLatestMovies()
+        Log.d("ViewModel", "passed init after getLatestMovies()")
     }
 
     enum class ApiStatus { LOADING, ERROR, DONE }
@@ -38,9 +41,13 @@ class DiscoverViewModel: ViewModel() {
 
 
 
-    private val _discoverMovies = MutableLiveData<List<Movie>>()
-    val discoverMovies: LiveData<List<Movie>>
-        get() = _discoverMovies
+    private val _popularMovies = MutableLiveData<List<Movie>>()
+    val popularMovies: LiveData<List<Movie>>
+        get() = _popularMovies
+
+    private val _latestMovies = MutableLiveData<List<Movie>>()
+    val latestMovies: LiveData<List<Movie>>
+        get() = _latestMovies
 
     private val _status = MutableLiveData<ApiStatus>()
     val status: LiveData<ApiStatus>
@@ -52,36 +59,30 @@ class DiscoverViewModel: ViewModel() {
         get() = _navigateToSelectedMovie
 
 
-
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
 
-    private fun getMovies(){
+    private fun getPopularMovies(){
 
-        Log.d("ViewModel", "GetMovies called")
+        Log.d("ViewModel", "GetPopularMovies called")
        viewModelScope.launch {
-           var any = movieService.getDiscoverMovies()
+           var any = movieRepository.getPopularMovies()
            Log.i("response", any.toString())
            Log.i("list", any.results.toString())
-           _discoverMovies.value = any.results
+           _popularMovies.value = any.results
        }
+    }
 
-        /*
-        coroutineScope.launch {
-            var getMoviesDeferred = movieService.getDiscoverMovies()
-            try{
-                _status.value = ApiStatus.LOADING
-                val listResult = getMoviesDeferred.results
-                _status.value = ApiStatus.DONE
-                _discoverMovies.value = listResult
-            } catch(e : Exception){
-                _status.value = ApiStatus.ERROR
-                _discoverMovies.value = ArrayList()
-            }
-        } */
+    private fun getLatestMovies(){
 
-
+        Log.d("ViewModel", "GetPopularMovies called")
+        viewModelScope.launch {
+            var any = movieRepository.getLatestMovies()
+            Log.i("response", any.toString())
+            Log.i("list", any.results.toString())
+            _latestMovies.value = any.results
+        }
     }
 
     override fun onCleared() {

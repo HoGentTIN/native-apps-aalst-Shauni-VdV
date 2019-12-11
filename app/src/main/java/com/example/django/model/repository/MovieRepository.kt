@@ -29,10 +29,13 @@ class MovieRepository(context : Context) : IMovieRepository {
     private val movieDatabase = MovieDatabase.getInstance(context)
     private val movieDao: MovieDatabaseDao = movieDatabase.movieDao
 
-    override suspend fun getMovieList(): MovieListResponse{
+    override suspend fun getPopularMovies(): MovieListResponse{
         return movieService.getDiscoverMovies()
     }
 
+    override suspend fun getLatestMovies(): MovieListResponse {
+        return movieService.getLatestMovies()
+    }
     override suspend fun insertMovieDatabase(list: List<Movie>) {
         movieDao.insert(list)
     }
