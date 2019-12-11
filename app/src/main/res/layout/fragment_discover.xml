@@ -22,7 +22,7 @@
             android:lineSpacingExtra="10sp"
             android:paddingTop="10dp"
             android:paddingBottom="5dp"
-            android:text="Popular"
+            android:text="Popular Movies"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/popular_movies_grid"
