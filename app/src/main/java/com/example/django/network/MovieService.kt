@@ -10,9 +10,11 @@ import retrofit2.http.QueryMap
 interface MovieService {
 
 
-    @GET("3/discover/movie?api_key=1db8f6ebe89295a86017d0bfe634af7b")
+    @GET("3/discover/movie")
     suspend fun getDiscoverMovies(): MovieListResponse
 
+    @GET("3")
+    suspend fun getLatestMovies() : MovieListResponse
     @GET("3/movie/{movie_id}")
     fun getMovieById(@QueryMap hashMap: HashMap<String, String> = HashMap()): Movie
 }
