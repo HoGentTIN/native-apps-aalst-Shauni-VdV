@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.django.adapters.bindRecyclerView
 import kotlinx.android.synthetic.main.fragment_discover.*
 import kotlinx.android.synthetic.main.fragment_discover.view.*
+import androidx.recyclerview.widget.GridLayoutManager
+
 
 
 class DiscoverFragment : Fragment() {
@@ -45,8 +47,8 @@ class DiscoverFragment : Fragment() {
         var layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         binding.moviesGrid.minimumHeight = 200
         val recyclerView = binding.moviesGrid as RecyclerView
-
-        recyclerView.setHasFixedSize(true)
+        recyclerView.minimumHeight = 200
+        recyclerView.setHasFixedSize(false)
         recyclerView.setLayoutManager(layoutManager)
 
 
