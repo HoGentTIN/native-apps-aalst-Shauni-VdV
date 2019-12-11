@@ -15,25 +15,53 @@
         tools:context=".MainActivity">
 
         <!-- Popular movies -->
+        <TextView
+            android:id="@+id/popular_movies_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="10sp"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:text="Popular"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/popular_movies_grid"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/popular_movies_grid"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:adjustViewBounds="true"
-            android:clipToPadding="true"
+            android:clipToPadding="false"
             android:padding="0dp"
             app:layoutManager="LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/latest_movies_grid"
+            app:layout_constraintBottom_toTopOf="@id/latest_movies_textView"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popular_movies_textView"
             app:listData="@{viewModel.popularMovies}"
             app:spanCount="20"
             tools:itemCount="20"
             tools:listitem="@layout/movie_grid_item" />
 
         <!-- Latest movies -->
+        <TextView
+            android:id="@+id/latest_movies_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="10sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="5dp"
+            android:text="Now in theaters"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/latest_movies_grid"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popular_movies_grid" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/latest_movies_grid"
             android:layout_width="0dp"
@@ -46,7 +74,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/popular_movies_grid"
+            app:layout_constraintTop_toBottomOf="@id/latest_movies_textView"
             app:listData="@{viewModel.latestMovies}"
             app:spanCount="20"
             tools:itemCount="20"
