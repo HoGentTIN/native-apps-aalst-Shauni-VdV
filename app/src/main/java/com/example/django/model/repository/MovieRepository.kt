@@ -15,9 +15,15 @@ import kotlinx.coroutines.withContext
 import java.lang.Exception
 import javax.inject.Inject
 import kotlinx.coroutines.Deferred
+import android.net.ConnectivityManager
+import android.widget.Toast
 
 
+@Suppress("DEPRECATION")
 class MovieRepository(context : Context) : IMovieRepository {
+
+
+
 
     @Inject
     lateinit var movieService : MovieService
@@ -26,13 +32,24 @@ class MovieRepository(context : Context) : IMovieRepository {
         App.appComponent.inject(this)
     }
 
+    private val context : Context = context
     private val movieDatabase = MovieDatabase.getInstance(context)
     private val movieDao: MovieDatabaseDao = movieDatabase.movieDao
 
-    override suspend fun getMovieList(): MovieListResponse{
-        return movieService.getDiscoverMovies()
+    override suspend fun getPopularMovies(): MovieListResponse{
+
+        if (isInternetAvailable(context)) {
+            return movieService.getDiscoverMovies()
+
+        } else {
+            Toast.makeText(context, "No Internet Available", Toast.LENGTH_SHORT).show()
+            return MovieListResponse()
+        }
     }
 
+    override suspend fun getLatestMovies(): MovieListResponse {
+        return movieService.getLatestMovies()
+    }
     override suspend fun insertMovieDatabase(list: List<Movie>) {
         movieDao.insert(list)
     }
@@ -81,4 +98,12 @@ class MovieRepository(context : Context) : IMovieRepository {
         return movieDao.getFavorite(pageSize = pageSize, pageIndex = pageIndex)
     }
 
+
+    internal fun isInternetAvailable(context : Context): Boolean {
+        val mConMgr = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        return (mConMgr.activeNetworkInfo != null
+                && mConMgr.activeNetworkInfo!!.isAvailable
+                && mConMgr.activeNetworkInfo!!.isConnected)
+    }
 }

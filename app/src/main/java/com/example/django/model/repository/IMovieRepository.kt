@@ -12,7 +12,9 @@ interface IMovieRepository {
      * API related functions
      *
      */
-    suspend fun getMovieList(): MovieListResponse
+    suspend fun getPopularMovies(): MovieListResponse
+
+    suspend fun getLatestMovies(): MovieListResponse
 
     suspend fun insertMovieDatabase(
         list: List<Movie>

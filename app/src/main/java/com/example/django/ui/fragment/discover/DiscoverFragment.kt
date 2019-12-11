@@ -44,18 +44,28 @@ class DiscoverFragment : Fragment() {
         binding.viewModel = viewModel
 
 
-        var layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
-        binding.moviesGrid.minimumHeight = 200
-        val recyclerView = binding.moviesGrid as RecyclerView
-        recyclerView.minimumHeight = 200
-        recyclerView.setHasFixedSize(false)
-        recyclerView.setLayoutManager(layoutManager)
+        var layoutManagerPopular = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+
+        var layoutManagerLatest = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+
+        val recyclerViewPopular = binding.popularMoviesGrid as RecyclerView
+        recyclerViewPopular.setHasFixedSize(false)
+        recyclerViewPopular.setLayoutManager(layoutManagerPopular)
+
+        val recyclerViewLatest = binding.latestMoviesGrid as RecyclerView
+        recyclerViewLatest.setHasFixedSize(false)
+        recyclerViewLatest.setLayoutManager(layoutManagerLatest)
+
 
 
 
         // Sets the adapter of the photosGrid RecyclerView with clickHandler lambda that
         // tells the viewModel when our property is clicked
-        binding.moviesGrid.adapter = MovieGridAdapter(MovieGridAdapter.OnClickListener {
+        binding.popularMoviesGrid.adapter = MovieGridAdapter(MovieGridAdapter.OnClickListener {
+            viewModel.displayMovieDetails(it)
+        })
+
+        binding.latestMoviesGrid.adapter = MovieGridAdapter(MovieGridAdapter.OnClickListener {
             viewModel.displayMovieDetails(it)
         })
 
