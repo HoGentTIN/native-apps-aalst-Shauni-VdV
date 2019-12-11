@@ -16,6 +16,9 @@ interface IMovieRepository {
 
     suspend fun getLatestMovies(): MovieListResponse
 
+    suspend fun getTopRatedMovies(): MovieListResponse
+
+
     suspend fun insertMovieDatabase(
         list: List<Movie>
     )

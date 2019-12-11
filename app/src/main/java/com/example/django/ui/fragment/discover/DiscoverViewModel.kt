@@ -30,6 +30,10 @@ class DiscoverViewModel: ViewModel() {
 
         getLatestMovies()
         Log.d("ViewModel", "passed init after getLatestMovies()")
+
+        getTopRatedMovies()
+        Log.d("ViewModel", "passed init after getTopRatedMovies()")
+
     }
 
     enum class ApiStatus { LOADING, ERROR, DONE }
@@ -48,6 +52,11 @@ class DiscoverViewModel: ViewModel() {
     private val _latestMovies = MutableLiveData<List<Movie>>()
     val latestMovies: LiveData<List<Movie>>
         get() = _latestMovies
+
+    private val _topRatedMovies = MutableLiveData<List<Movie>>()
+    val topRatedMovies: LiveData<List<Movie>>
+        get() = _topRatedMovies
+
 
     private val _status = MutableLiveData<ApiStatus>()
     val status: LiveData<ApiStatus>
@@ -82,6 +91,17 @@ class DiscoverViewModel: ViewModel() {
             Log.i("response", any.toString())
             Log.i("list", any.results.toString())
             _latestMovies.value = any.results
+        }
+    }
+
+    private fun getTopRatedMovies(){
+
+        Log.d("ViewModel", "GetTopRatedMovies called")
+        viewModelScope.launch {
+            var any = movieRepository.getTopRatedMovies()
+            Log.i("response", any.toString())
+            Log.i("list", any.results.toString())
+            _topRatedMovies.value = any.results
         }
     }
 

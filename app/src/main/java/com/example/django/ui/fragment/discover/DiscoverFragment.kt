@@ -48,6 +48,9 @@ class DiscoverFragment : Fragment() {
 
         var layoutManagerLatest = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
+        var layoutManagerTopRated = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+
+
         val recyclerViewPopular = binding.popularMoviesGrid as RecyclerView
         recyclerViewPopular.setHasFixedSize(false)
         recyclerViewPopular.setLayoutManager(layoutManagerPopular)
@@ -55,6 +58,10 @@ class DiscoverFragment : Fragment() {
         val recyclerViewLatest = binding.latestMoviesGrid as RecyclerView
         recyclerViewLatest.setHasFixedSize(false)
         recyclerViewLatest.setLayoutManager(layoutManagerLatest)
+
+        val recyclerViewTopRated = binding.topRatedMoviesGrid as RecyclerView
+        recyclerViewTopRated.setHasFixedSize(false)
+        recyclerViewTopRated.setLayoutManager(layoutManagerTopRated)
 
 
 
@@ -66,6 +73,10 @@ class DiscoverFragment : Fragment() {
         })
 
         binding.latestMoviesGrid.adapter = MovieGridAdapter(MovieGridAdapter.OnClickListener {
+            viewModel.displayMovieDetails(it)
+        })
+
+        binding.topRatedMoviesGrid.adapter = MovieGridAdapter(MovieGridAdapter.OnClickListener {
             viewModel.displayMovieDetails(it)
         })
 
