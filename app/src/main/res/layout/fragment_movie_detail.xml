@@ -23,6 +23,7 @@
                 android:id="@+id/main_photo_image"
                 android:layout_width="0dp"
                 android:layout_height="266dp"
+                android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 app:imageUrl="@{viewModel.selectedMovie.getImg()}"
                 app:layout_constraintEnd_toEndOf="parent"

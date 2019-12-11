@@ -14,31 +14,59 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+        <!-- Popular movies -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/movies_grid"
+            android:id="@+id/popular_movies_grid"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:padding="6dp"
-            android:clipToPadding="false"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:adjustViewBounds="true"
+            android:clipToPadding="true"
+            android:padding="0dp"
+            app:layoutManager="LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="1.0"
             app:listData="@{viewModel.discoverMovies}"
-            app:spanCount="2"
-            tools:itemCount="16"
+            app:spanCount="20"
+            tools:itemCount="20"
             tools:listitem="@layout/movie_grid_item" />
+
+        <!-- Latest movies
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/latest_movies_grid"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:clipToPadding="true"
+            android:padding="0dp"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="1.0"
+            app:listData="@{viewModel.latestMovies}"
+            app:spanCount="20"
+            tools:itemCount="20"
+            tools:listitem="@layout/movie_grid_item" />
+
+        -->
 
         <ImageView
             android:id="@+id/status_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:apiStatus="@{viewModel.status}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:apiStatus="@{viewModel.status}" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

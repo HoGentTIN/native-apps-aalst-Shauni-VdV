@@ -11,6 +11,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.django.R
 import com.example.django.adapters.MovieGridAdapter
 import com.example.django.databinding.FragmentDiscoverBinding
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.django.adapters.bindRecyclerView
+import kotlinx.android.synthetic.main.fragment_discover.*
+import kotlinx.android.synthetic.main.fragment_discover.view.*
+import androidx.recyclerview.widget.GridLayoutManager
+
 
 
 class DiscoverFragment : Fragment() {
@@ -27,12 +34,24 @@ class DiscoverFragment : Fragment() {
         val binding : FragmentDiscoverBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_discover, container, false)
         //val binding = FragmentDiscoverBinding.inflate(inflater)
 
+        activity?.setTitle("Discover")
+
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.lifecycleOwner = this
 
 
         // Giving the binding access to the DiscoverViewModel
         binding.viewModel = viewModel
+
+
+        var layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.moviesGrid.minimumHeight = 200
+        val recyclerView = binding.moviesGrid as RecyclerView
+        recyclerView.minimumHeight = 200
+        recyclerView.setHasFixedSize(false)
+        recyclerView.setLayoutManager(layoutManager)
+
+
 
         // Sets the adapter of the photosGrid RecyclerView with clickHandler lambda that
         // tells the viewModel when our property is clicked

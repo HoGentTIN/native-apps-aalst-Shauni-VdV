@@ -18,6 +18,7 @@ class MovieGridAdapter( val onClickListener: OnClickListener ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
             binding.property = movie
+            binding.moviePoster.minimumHeight = 200
             // This is important, because it forces the data binding to execute immediately,
             // which allows the RecyclerView to make the correct view size measurements
             binding.executePendingBindings()
