@@ -10,8 +10,11 @@
         android:name="com.example.django.ui.fragment.discover.DiscoverFragment"
         android:label="DiscoverFragment" >
         <action
-            android:id="@+id/showDetail"
-            app:destination="@id/detailFragment" />
+            android:id="@+id/showMovieDetail"
+            app:destination="@id/detailMovieFragment" />
+        <action
+            android:id="@+id/showTvShowDetail"
+            app:destination="@id/detailTvShowFragment" />
     </fragment>
 
     <fragment
@@ -30,12 +33,22 @@
         android:label="SearchFragment" />
 
     <fragment
-        android:id="@+id/detailFragment"
-        android:name="com.example.django.ui.fragment.detail.DetailFragment"
+        android:id="@+id/detailMovieFragment"
+        android:name="com.example.django.ui.fragment.detail.DetailMovieFragment"
         android:label="DetailFragment">
         <argument
             android:name="selectedMovie"
             app:argType="com.example.django.model.Movie"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailTvShowFragment"
+        android:name="com.example.django.ui.fragment.detail.DetailTvShowFragment"
+        android:label="DetailTvShowFragment">
+        <argument
+            android:name="selectedShow"
+            app:argType="com.example.django.model.TvShow"
             />
     </fragment>
 

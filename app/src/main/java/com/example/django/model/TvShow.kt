@@ -20,4 +20,9 @@ data class TvShow(
     val vote_average: Double? = null,
     val overview: String? = null,
     val poster_path: String? = null
-) : Parcelable
+) : Parcelable {
+    fun getImg(): String {
+
+        return "https://image.tmdb.org/t/p/w500/" + poster_path
+    }
+}

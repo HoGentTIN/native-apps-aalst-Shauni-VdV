@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.django.R
 import com.example.django.model.Movie
+import com.example.django.model.TvShow
 import com.example.django.ui.fragment.discover.DiscoverViewModel.ApiStatus
 
 /**
@@ -18,6 +19,12 @@ import com.example.django.ui.fragment.discover.DiscoverViewModel.ApiStatus
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Movie>?) {
     val adapter = recyclerView.adapter as MovieGridAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("tvData")
+fun bindTvRecyclerView(recyclerView: RecyclerView, data: List<TvShow>?){
+    val adapter = recyclerView.adapter as TvGridAdapter
     adapter.submitList(data)
 }
 
