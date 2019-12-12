@@ -7,8 +7,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.django.App
 import com.example.django.model.Movie
+import com.example.django.model.TvShow
 import com.example.django.model.repository.IMovieRepository
 import com.example.django.network.MovieService
+import com.example.django.network.TvService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -34,6 +36,8 @@ class DiscoverViewModel: ViewModel() {
         getTopRatedMovies()
         Log.d("ViewModel", "passed init after getTopRatedMovies()")
 
+        getPopularTvShows()
+        Log.d("ViewModel", "passed init after getTopRatedMovies()")
     }
 
     enum class ApiStatus { LOADING, ERROR, DONE }
@@ -42,6 +46,8 @@ class DiscoverViewModel: ViewModel() {
     lateinit var movieRepository: IMovieRepository
     @Inject
     lateinit var movieService: MovieService
+    @Inject
+    lateinit var tvService: TvService
 
 
 
@@ -58,6 +64,12 @@ class DiscoverViewModel: ViewModel() {
         get() = _topRatedMovies
 
 
+    private val _popularTvShows = MutableLiveData<List<TvShow>>()
+    val popularTvShows: LiveData<List<TvShow>>
+        get() = _popularTvShows
+
+
+
     private val _status = MutableLiveData<ApiStatus>()
     val status: LiveData<ApiStatus>
         get() = _status
@@ -66,6 +78,10 @@ class DiscoverViewModel: ViewModel() {
     private val _navigateToSelectedMovie = MutableLiveData<Movie>()
     val navigateToSelectedMovie: LiveData<Movie>
         get() = _navigateToSelectedMovie
+
+    private val _navigateToSelectedTvShow = MutableLiveData<TvShow>()
+    val navigateToSelectedTvShow: LiveData<TvShow>
+        get() = _navigateToSelectedTvShow
 
 
     private var viewModelJob = Job()
@@ -105,10 +121,23 @@ class DiscoverViewModel: ViewModel() {
         }
     }
 
+
+    private fun getPopularTvShows(){
+
+        Log.d("ViewModel", "GetPopularTvShows called")
+        viewModelScope.launch {
+            var any = tvService.getPopularShows()
+            Log.i("response", any.toString())
+            Log.i("list", any.results.toString())
+            _popularTvShows.value = any.results
+        }
+    }
+
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
     }
+
 
     fun displayMovieDetails(movie: Movie) {
         _navigateToSelectedMovie.value = movie
@@ -116,5 +145,12 @@ class DiscoverViewModel: ViewModel() {
 
     fun displayMovieDetailsComplete() {
         _navigateToSelectedMovie.value = null
+    }
+
+    fun displayTvShowDetails(tvShow: TvShow) {
+        _navigateToSelectedTvShow.value = tvShow
+    }
+    fun displayTvShowDetailsComplete() {
+        _navigateToSelectedTvShow.value = null
     }
 }

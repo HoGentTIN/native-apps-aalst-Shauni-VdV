@@ -1,4 +1,3 @@
-
 package com.example.django.adapters
 
 import android.view.View
@@ -22,8 +21,8 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Movie>?) {
     adapter.submitList(data)
 }
 
-@BindingAdapter("tvData")
-fun bindTvRecyclerView(recyclerView: RecyclerView, data: List<TvShow>?){
+@BindingAdapter("listData")
+fun bindTvRecyclerView(recyclerView: RecyclerView, data: List<TvShow>?) {
     val adapter = recyclerView.adapter as TvGridAdapter
     adapter.submitList(data)
 }
@@ -40,7 +39,8 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
             .apply(
                 RequestOptions()
                     .placeholder(R.drawable.loading_animation)
-                    .error(R.drawable.ic_broken_image))
+                    .error(R.drawable.ic_broken_image)
+            )
             .into(imgView)
     }
 }
