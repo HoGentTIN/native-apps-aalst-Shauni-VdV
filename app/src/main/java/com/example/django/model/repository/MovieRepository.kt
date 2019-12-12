@@ -39,7 +39,9 @@ class MovieRepository(context : Context) : IMovieRepository {
     override suspend fun getPopularMovies(): MovieListResponse{
 
         if (isInternetAvailable(context)) {
-            return movieService.getDiscoverMovies()
+            var result =  movieService.getDiscoverMovies()
+            insertMovieDatabase(result.results!!)
+            return result
 
         } else {
             Toast.makeText(context, "No Internet Available", Toast.LENGTH_SHORT).show()
@@ -48,8 +50,17 @@ class MovieRepository(context : Context) : IMovieRepository {
     }
 
     override suspend fun getLatestMovies(): MovieListResponse {
-        return movieService.getLatestMovies()
+        var result = movieService.getLatestMovies()
+        insertMovieDatabase(result.results!!)
+        return result
     }
+
+    override suspend fun getTopRatedMovies(): MovieListResponse {
+        var result = movieService.getTopRatedMovies()
+        insertMovieDatabase(result.results!!)
+        return result
+    }
+
     override suspend fun insertMovieDatabase(list: List<Movie>) {
         movieDao.insert(list)
     }

@@ -15,6 +15,10 @@ interface MovieService {
 
     @GET("3/movie/now_playing")
     suspend fun getLatestMovies() : MovieListResponse
+
+    @GET("3/movie/top_rated")
+    suspend fun getTopRatedMovies(): MovieListResponse
+
     @GET("3/movie/{movie_id}")
     fun getMovieById(@QueryMap hashMap: HashMap<String, String> = HashMap()): Movie
 }

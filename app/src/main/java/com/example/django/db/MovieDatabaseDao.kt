@@ -18,10 +18,10 @@ interface MovieDatabaseDao {
     @Query("SELECT * FROM movie_table WHERE id = :id")
     suspend fun getMovie(id: String): Movie?
 
-    @Insert(onConflict = IGNORE)
+    @Insert(onConflict = REPLACE)
     suspend fun insert(movie: Movie)
 
-    @Insert(onConflict = IGNORE)
+    @Insert(onConflict = REPLACE)
     suspend fun insert(list: List<Movie>)
 
     @Insert(onConflict = REPLACE)
