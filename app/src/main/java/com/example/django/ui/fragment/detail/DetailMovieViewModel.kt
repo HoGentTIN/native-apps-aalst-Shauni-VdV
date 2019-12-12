@@ -9,7 +9,7 @@ import com.example.django.App
 import com.example.django.R
 import com.example.django.model.Movie
 
-class DetailViewModel(movie: Movie, app: Application) : AndroidViewModel(app) {
+class DetailMovieViewModel(movie: Movie, app: Application) : AndroidViewModel(app) {
 
     init {
         App.appComponent.inject(this)
