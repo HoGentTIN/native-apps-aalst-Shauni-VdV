@@ -22,7 +22,9 @@ data class TvShow(
     val poster_path: String? = null
 ) : Parcelable {
     fun getImg(): String {
-
         return "https://image.tmdb.org/t/p/w500/" + poster_path
+    }
+    fun getBackdrop() : String {
+        return return "https://image.tmdb.org/t/p/w500/" + backdrop_path
     }
 }
