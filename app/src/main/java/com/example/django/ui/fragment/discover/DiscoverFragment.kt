@@ -13,11 +13,7 @@ import com.example.django.adapters.MovieGridAdapter
 import com.example.django.databinding.FragmentDiscoverBinding
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.django.adapters.bindRecyclerView
-import kotlinx.android.synthetic.main.fragment_discover.*
-import kotlinx.android.synthetic.main.fragment_discover.view.*
-import androidx.recyclerview.widget.GridLayoutManager
-
+import com.example.django.adapters.TvGridAdapter
 
 
 class DiscoverFragment : Fragment() {
@@ -44,24 +40,34 @@ class DiscoverFragment : Fragment() {
         binding.viewModel = viewModel
 
 
-        var layoutManagerPopular = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        var layoutManagerPopularMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
-        var layoutManagerLatest = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        var layoutManagerLatestMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
-        var layoutManagerTopRated = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        var layoutManagerTopRatedMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
 
-        val recyclerViewPopular = binding.popularMoviesGrid as RecyclerView
-        recyclerViewPopular.setHasFixedSize(false)
-        recyclerViewPopular.setLayoutManager(layoutManagerPopular)
+        var layoutManagerPopularTvShows = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
-        val recyclerViewLatest = binding.latestMoviesGrid as RecyclerView
-        recyclerViewLatest.setHasFixedSize(false)
-        recyclerViewLatest.setLayoutManager(layoutManagerLatest)
 
-        val recyclerViewTopRated = binding.topRatedMoviesGrid as RecyclerView
-        recyclerViewTopRated.setHasFixedSize(false)
-        recyclerViewTopRated.setLayoutManager(layoutManagerTopRated)
+
+
+        val recyclerViewPopularMovies = binding.popularMoviesGrid as RecyclerView
+        recyclerViewPopularMovies.setHasFixedSize(false)
+        recyclerViewPopularMovies.setLayoutManager(layoutManagerPopularMovies)
+
+        val recyclerViewLatestMovies = binding.latestMoviesGrid as RecyclerView
+        recyclerViewLatestMovies.setHasFixedSize(false)
+        recyclerViewLatestMovies.setLayoutManager(layoutManagerLatestMovies)
+
+        val recyclerViewTopRatedMovies = binding.topRatedMoviesGrid as RecyclerView
+        recyclerViewTopRatedMovies.setHasFixedSize(false)
+        recyclerViewTopRatedMovies.setLayoutManager(layoutManagerTopRatedMovies)
+
+        val recyclerViewPopularTvShows = binding.popularShowsGrid as RecyclerView
+        recyclerViewPopularTvShows.setHasFixedSize(false)
+        recyclerViewPopularTvShows.setLayoutManager(layoutManagerPopularTvShows)
+
 
 
 
@@ -80,15 +86,28 @@ class DiscoverFragment : Fragment() {
             viewModel.displayMovieDetails(it)
         })
 
+        binding.popularShowsGrid.adapter = TvGridAdapter(TvGridAdapter.OnClickListener {
+            viewModel.displayTvShowDetails(it)
+        })
+
         // Observe the navigateToSelectedMovieLiveData and Navigate when it isn't null
         // After navigating, call displayPropertyDetailsComplete() so that the ViewModel is ready
         // for another navigation event.
         viewModel.navigateToSelectedMovie.observe(this, Observer {
             if ( null != it ) {
                 // Must find the NavController from the Fragment
-                this.findNavController().navigate(DiscoverFragmentDirections.showDetail(it))
+                this.findNavController().navigate(DiscoverFragmentDirections.showMovieDetail(it))
                 // Tell the ViewModel we've made the navigate call to prevent multiple navigation
                 viewModel.displayMovieDetailsComplete()
+            }
+        })
+
+        viewModel.navigateToSelectedTvShow.observe(this, Observer {
+            if ( null != it ) {
+                // Must find the NavController from the Fragment
+                this.findNavController().navigate(DiscoverFragmentDirections.showTvShowDetail(it))
+                // Tell the ViewModel we've made the navigate call to prevent multiple navigation
+                viewModel.displayTvShowDetailsComplete()
             }
         })
         return binding.root

@@ -5,6 +5,7 @@ import android.content.Context
 import com.example.django.BuildConfig
 
 import com.example.django.network.MovieService
+import com.example.django.network.TvService
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -23,6 +24,11 @@ class NetworkModule(private val context: Context) {
     @Provides
     internal fun provideMovieService(retrofit: Retrofit): MovieService {
         return retrofit.create(MovieService::class.java)
+    }
+
+    @Provides
+    internal fun provideTvService(retrofit: Retrofit): TvService {
+        return retrofit.create(TvService::class.java)
     }
 
 

@@ -1,4 +1,3 @@
-
 package com.example.django.adapters
 
 import android.view.View
@@ -10,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.django.R
 import com.example.django.model.Movie
+import com.example.django.model.TvShow
 import com.example.django.ui.fragment.discover.DiscoverViewModel.ApiStatus
 
 /**
@@ -18,6 +18,12 @@ import com.example.django.ui.fragment.discover.DiscoverViewModel.ApiStatus
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Movie>?) {
     val adapter = recyclerView.adapter as MovieGridAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("listData")
+fun bindTvRecyclerView(recyclerView: RecyclerView, data: List<TvShow>?) {
+    val adapter = recyclerView.adapter as TvGridAdapter
     adapter.submitList(data)
 }
 
@@ -33,7 +39,8 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
             .apply(
                 RequestOptions()
                     .placeholder(R.drawable.loading_animation)
-                    .error(R.drawable.ic_broken_image))
+                    .error(R.drawable.ic_broken_image)
+            )
             .into(imgView)
     }
 }

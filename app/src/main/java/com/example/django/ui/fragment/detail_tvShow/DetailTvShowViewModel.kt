@@ -8,22 +8,23 @@ import androidx.lifecycle.Transformations
 import com.example.django.App
 import com.example.django.R
 import com.example.django.model.Movie
+import com.example.django.model.TvShow
 
-class DetailViewModel(movie: Movie, app: Application) : AndroidViewModel(app) {
+class DetailTvShowViewModel(tvShow: TvShow, app: Application) : AndroidViewModel(app) {
 
     init {
         App.appComponent.inject(this)
     }
 
-    private val _selectedMovie = MutableLiveData<Movie>()
+    private val _selectedTvShow = MutableLiveData<TvShow>()
 
     // The external LiveData for the SelectedMovie
-    val selectedMovie: LiveData<Movie>
-        get() = _selectedMovie
+    val selectedTvShow: LiveData<TvShow>
+        get() = _selectedTvShow
 
     // Initialize the _selectedMovie MutableLiveData
     init {
-        _selectedMovie.value = movie
+        _selectedTvShow.value = tvShow
     }
 
 }

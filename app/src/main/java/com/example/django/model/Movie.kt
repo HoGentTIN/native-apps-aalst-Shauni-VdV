@@ -32,6 +32,9 @@ data class Movie(
     val isFavorite: Boolean? = false
     ): Parcelable {
 
+    fun getBackdrop() : String {
+        return return "https://image.tmdb.org/t/p/w500/" + backdrop_path
+    }
     fun getImg() : String {
         return "https://image.tmdb.org/t/p/w500/" + poster_path
     }

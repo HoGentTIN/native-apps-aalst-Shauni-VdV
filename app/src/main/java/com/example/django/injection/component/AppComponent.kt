@@ -4,7 +4,8 @@ import com.example.django.App
 import com.example.django.injection.module.DatabaseModule
 import com.example.django.injection.module.NetworkModule
 import com.example.django.model.repository.MovieRepository
-import com.example.django.ui.fragment.detail.DetailViewModel
+import com.example.django.ui.fragment.detail.DetailMovieViewModel
+import com.example.django.ui.fragment.detail.DetailTvShowViewModel
 import com.example.django.ui.fragment.discover.DiscoverViewModel
 import dagger.Component
 import javax.inject.Singleton
@@ -18,7 +19,9 @@ interface AppComponent {
 
     // ViewModels
     fun inject(discoverViewModel : DiscoverViewModel)
-    fun inject(detailViewModel: DetailViewModel)
+    fun inject(detailMovieViewModel: DetailMovieViewModel)
+    fun inject(detailTvShowViewModel: DetailTvShowViewModel)
+
 
     // Repositories
     fun inject(movieRepository: MovieRepository)
