@@ -8,4 +8,7 @@
     <string name="navbar_search">Search</string>
     <string name="navbar_discover">Discover</string>
 
+    <string name="discover_tab_text_movie">Movies</string>
+    <string name="discover_tab_text_tv">TV Shows</string>
+
 </resources>

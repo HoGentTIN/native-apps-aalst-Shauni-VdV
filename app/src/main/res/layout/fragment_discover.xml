@@ -9,151 +9,29 @@
             type="com.example.django.ui.fragment.discover.DiscoverViewModel" />
     </data>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/discover_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/discover_viewpager_tablayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".MainActivity">
+            android:layout_height="wrap_content">
 
-
-            <!-- Popular movies -->
-            <TextView
-                android:id="@+id/popular_movies_textView"
+            <com.google.android.material.tabs.TabItem
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="10sp"
-                android:text="Popular Movies"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/popular_movies_grid"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="match_parent"
+                android:text="@string/discover_tab_text_movie" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/popular_movies_grid"
-                android:layout_width="0dp"
-                android:layout_height="250dp"
-                android:adjustViewBounds="false"
-                android:clipToPadding="false"
-                android:padding="-10dp"
-                app:layoutManager="LinearLayoutManager"
-                app:layout_constraintBottom_toTopOf="@id/topRated_movies_textView"
-                app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/popular_movies_textView"
-                app:listData="@{viewModel.popularMovies}"
-                app:spanCount="20"
-                tools:itemCount="20"
-                tools:listitem="@layout/movie_grid_item" />
-
-            <!-- Top rated movies -->
-            <TextView
-                android:id="@+id/topRated_movies_textView"
+            <com.google.android.material.tabs.TabItem
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="-10dp"
-                android:text="Top Rated Movies"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/topRated_movies_grid"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/popular_movies_grid" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/topRated_movies_grid"
-                android:layout_width="0dp"
-                android:layout_height="250dp"
-                android:adjustViewBounds="true"
-                android:clipToPadding="true"
-                android:padding="-10dp"
-                app:layoutManager="LinearLayoutManager"
-                app:layout_constraintBottom_toTopOf="@id/latest_movies_textView"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/topRated_movies_textView"
-                app:listData="@{viewModel.topRatedMovies}"
-                app:spanCount="20"
-                tools:itemCount="20"
-                tools:listitem="@layout/movie_grid_item" />
-
-            <!-- Latest movies -->
-            <TextView
-                android:id="@+id/latest_movies_textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Now in theaters"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/latest_movies_grid"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/topRated_movies_grid" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/latest_movies_grid"
-                android:layout_width="0dp"
-                android:layout_height="250dp"
-                android:adjustViewBounds="true"
-                android:clipToPadding="true"
-                android:padding="0dp"
-                app:layoutManager="LinearLayoutManager"
-                app:layout_constraintBottom_toTopOf="@id/popular_shows_textView"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/latest_movies_textView"
-                app:listData="@{viewModel.latestMovies}"
-                app:spanCount="20"
-                tools:itemCount="20"
-                tools:listitem="@layout/movie_grid_item" />
-
-            <!-- Popular TV Shows -->
-            <TextView
-                android:id="@+id/popular_shows_textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Popular TV-Shows"
-                android:textSize="20sp"
-                android:textStyle="bold"
-
-                app:layout_constraintBottom_toTopOf="@id/popular_shows_grid"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/latest_movies_grid" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/popular_shows_grid"
-                android:layout_width="0dp"
-                android:layout_height="250dp"
-                android:adjustViewBounds="true"
-                android:clipToPadding="true"
-                android:padding="0dp"
-                app:layoutManager="LinearLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/popular_shows_textView"
-                app:listData="@{viewModel.popularTvShows}"
-                app:spanCount="20"
-                tools:itemCount="20"
-                tools:listitem="@layout/movie_grid_item" />
+                android:layout_height="match_parent"
+                android:text="@string/discover_tab_text_tv" />
 
 
-            <ImageView
-                android:id="@+id/status_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:apiStatus="@{viewModel.status}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        </com.google.android.material.tabs.TabLayout>
+    </androidx.viewpager.widget.ViewPager>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
 </layout>
