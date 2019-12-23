@@ -61,6 +61,7 @@ class MovieRepository(context : Context) : IMovieRepository {
         return result
     }
 
+
     override suspend fun insertMovieDatabase(list: List<Movie>) {
         movieDao.insert(list)
     }

@@ -25,6 +25,6 @@ data class TvShow(
         return "https://image.tmdb.org/t/p/w500/" + poster_path
     }
     fun getBackdrop() : String {
-        return return "https://image.tmdb.org/t/p/w500/" + backdrop_path
+        return "https://image.tmdb.org/t/p/w500/" + backdrop_path
     }
 }

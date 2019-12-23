@@ -3,8 +3,6 @@ package com.example.django.adapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.example.django.ui.fragment.FavoritesFragment
-import com.example.django.ui.fragment.discover.DiscoverFragment
 import com.example.django.ui.fragment.discover.discoverMovies.DiscoverMoviesFragment
 import com.example.django.ui.fragment.discover.discoverTvShows.DiscoverTvShowsFragment
 

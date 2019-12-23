@@ -39,7 +39,7 @@
 
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.example.django.ui.fragment.FavoritesFragment"
+        android:name="com.example.django.ui.fragment.favorites.FavoritesFragment"
         android:label="FavoritesFragment" />
 
     <fragment
