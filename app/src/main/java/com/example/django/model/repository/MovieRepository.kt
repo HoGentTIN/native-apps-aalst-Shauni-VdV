@@ -61,6 +61,11 @@ class MovieRepository(context : Context) : IMovieRepository {
         return result
     }
 
+    override suspend fun getFavoriteMovies(): List<Movie> {
+        var result = movieDao.getFavoriteMovies()
+        return result
+    }
+
 
     override suspend fun insertMovieDatabase(list: List<Movie>) {
         movieDao.insert(list)
@@ -101,15 +106,6 @@ class MovieRepository(context : Context) : IMovieRepository {
     override suspend fun deleteAllFromDao() {
         return movieDao.deleteAll()
     }
-
-    override suspend fun getMoviePageFromDao(pageSize: Int, pageIndex: Int): List<Movie>? {
-        return movieDao.getMoviePage(pageSize, pageIndex)
-    }
-
-    override suspend fun getFavoriteFromDao(pageSize: Int, pageIndex: Int): List<Movie>? {
-        return movieDao.getFavorite(pageSize = pageSize, pageIndex = pageIndex)
-    }
-
 
     internal fun isInternetAvailable(context : Context): Boolean {
         val mConMgr = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

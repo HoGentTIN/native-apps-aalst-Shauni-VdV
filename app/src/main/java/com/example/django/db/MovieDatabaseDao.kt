@@ -18,6 +18,17 @@ interface MovieDatabaseDao {
     @Query("SELECT * FROM movie_table WHERE id = :id")
     suspend fun getMovie(id: String): Movie?
 
+    @Query("SELECT * FROM movie_table WHERE isFavorite")
+    suspend fun getFavoriteMovies() : List<Movie>
+
+    @Query("UPDATE movie_table SET isFavorite = 1 WHERE id = :id")
+    suspend fun addMovieToFavorites(id: String)
+
+    @Query("UPDATE movie_table SET isFavorite = 0 WHERE id = :id")
+    suspend fun deleteMovieFromFavorites(id: String)
+
+
+
     @Insert(onConflict = REPLACE)
     suspend fun insert(movie: Movie)
 
