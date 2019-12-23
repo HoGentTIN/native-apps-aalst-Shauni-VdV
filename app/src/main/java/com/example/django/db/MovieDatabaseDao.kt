@@ -47,17 +47,4 @@ interface MovieDatabaseDao {
     @Query("DELETE FROM movie_table")
     suspend fun deleteAll()
 
-    /*
-    @Query("SELECT * FROM playlist " +
-    "WHERE playlist_title LIKE '% :playlistTitle %' " +
-    "GROUP BY playlist_title " +
-    "ORDER BY playlist_title " +
-    "LIMIT :limit")
-    List<IPlaylist> searchPlaylists(String playlistTitle, int limit);
-     */
-    @Query("SELECT * FROM movie_table LIMIT :pageSize OFFSET :pageIndex")
-    suspend fun getMoviePage(pageSize: Int, pageIndex: Int): List<Movie>?
-
-    @Query("SELECT * FROM movie_table WHERE isFavorite = 1 LIMIT :pageSize OFFSET ((:pageIndex-1)*:pageSize) ")
-    suspend fun getFavorite(pageSize: Int, pageIndex: Int): List<Movie>?
-}
+   }

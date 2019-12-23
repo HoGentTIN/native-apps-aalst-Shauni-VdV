@@ -6,6 +6,7 @@ import com.example.django.adapters.FavoritesPagerAdapter
 import com.example.django.injection.module.DatabaseModule
 import com.example.django.injection.module.NetworkModule
 import com.example.django.model.repository.MovieRepository
+import com.example.django.model.repository.TvShowRepository
 import com.example.django.ui.fragment.detail.DetailMovieViewModel
 import com.example.django.ui.fragment.detail.DetailTvShowViewModel
 import com.example.django.ui.fragment.discover.discoverMovies.DiscoverMoviesViewModel
@@ -45,6 +46,7 @@ interface AppComponent {
 
     // Repositories
     fun inject(movieRepository: MovieRepository)
+    fun inject(tvShowRepository: TvShowRepository)
 
 
     @Component.Builder
