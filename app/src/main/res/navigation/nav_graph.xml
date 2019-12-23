@@ -66,5 +66,13 @@
             app:argType="com.example.django.model.TvShow"
             />
     </fragment>
+    <fragment
+        android:id="@+id/favoritesMoviesFragment"
+        android:name="com.example.django.ui.fragment.favorites.favoriteMovies.FavoritesMoviesFragment"
+        android:label="FavoritesMoviesFragment" />
+    <fragment
+        android:id="@+id/favoritesTvShowsFragment"
+        android:name="com.example.django.ui.fragment.favorites.favoriteTvShows.FavoritesTvShowsFragment"
+        android:label="FavoritesTvShowsFragment" />
 
 </navigation>
