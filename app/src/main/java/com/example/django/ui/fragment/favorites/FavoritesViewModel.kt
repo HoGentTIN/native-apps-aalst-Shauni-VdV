@@ -12,8 +12,6 @@ class FavoritesViewModel : ViewModel(){
     init {
         App.appComponent.inject(this)
     }
-    enum class ApiStatus { LOADING, ERROR, DONE }
-
 
     private val _navigateToSelectedMovie = MutableLiveData<Movie>()
     val navigateToSelectedMovie: LiveData<Movie>

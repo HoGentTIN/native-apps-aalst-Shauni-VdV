@@ -9,12 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.django.R
-import com.example.django.adapters.DiscoverPagerAdapter
 import com.example.django.adapters.FavoritesPagerAdapter
-import com.example.django.databinding.FragmentDiscoverBinding
 import com.example.django.databinding.FragmentFavoritesBinding
-import com.example.django.ui.fragment.discover.DiscoverViewModel
-import kotlinx.android.synthetic.main.fragment_discover.*
 import kotlinx.android.synthetic.main.fragment_favorites.*
 
 class FavoritesFragment : Fragment() {

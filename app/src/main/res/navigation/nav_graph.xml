@@ -40,7 +40,14 @@
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.django.ui.fragment.favorites.FavoritesFragment"
-        android:label="FavoritesFragment" />
+        android:label="FavoritesFragment" >
+    <action
+        android:id="@+id/showTvShowDetail"
+        app:destination="@id/detailTvShowFragment" />
+    <action
+        android:id="@+id/showMovieDetail"
+        app:destination="@id/detailMovieFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/searchFragment"
@@ -66,6 +73,8 @@
             app:argType="com.example.django.model.TvShow"
             />
     </fragment>
+
+
     <fragment
         android:id="@+id/favoritesMoviesFragment"
         android:name="com.example.django.ui.fragment.favorites.favoriteMovies.FavoritesMoviesFragment"

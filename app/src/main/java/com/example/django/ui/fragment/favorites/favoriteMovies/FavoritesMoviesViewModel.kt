@@ -1,6 +1,5 @@
 package com.example.django.ui.fragment.favorites.favoriteMovies
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,10 +26,6 @@ class FavoritesMoviesViewModel : ViewModel() {
     private val _favoriteMovies = MutableLiveData<List<Movie>>()
     val favoriteMovies: LiveData<List<Movie>>
         get() = _favoriteMovies
-
-    private val _status = MutableLiveData<ApiStatus>()
-    val status: LiveData<ApiStatus>
-        get() = _status
 
     private val _navigateToSelectedMovie = MutableLiveData<Movie>()
     val navigateToSelectedMovie: LiveData<Movie>

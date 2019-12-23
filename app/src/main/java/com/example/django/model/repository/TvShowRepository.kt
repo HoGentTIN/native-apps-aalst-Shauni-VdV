@@ -13,12 +13,15 @@ import javax.inject.Inject
 
 class TvShowRepository(context: Context) : ITvShowRepository {
 
-    @Inject
-    lateinit var tvService: TvService
+
 
     init {
         App.appComponent.inject(this)
     }
+
+    @Inject
+    lateinit var tvService: TvService
+
 
     private val context: Context = context
     private val tvShowDatabase = TvShowDatabase.getInstance(context)
