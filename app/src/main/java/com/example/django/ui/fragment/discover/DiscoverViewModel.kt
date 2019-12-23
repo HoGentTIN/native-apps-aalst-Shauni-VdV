@@ -20,35 +20,10 @@ import javax.inject.Inject
 
 
 class DiscoverViewModel: ViewModel() {
-
-
-
     init {
         App.appComponent.inject(this)
     }
-
     enum class ApiStatus { LOADING, ERROR, DONE }
-
-    @Inject
-    lateinit var movieRepository: IMovieRepository
-    @Inject
-    lateinit var movieService: MovieService
-    @Inject
-    lateinit var tvService: TvService
-
-
-
-
-
-    private val _popularTvShows = MutableLiveData<List<TvShow>>()
-    val popularTvShows: LiveData<List<TvShow>>
-        get() = _popularTvShows
-
-
-
-    private val _status = MutableLiveData<ApiStatus>()
-    val status: LiveData<ApiStatus>
-        get() = _status
 
 
     private val _navigateToSelectedMovie = MutableLiveData<Movie>()
@@ -58,18 +33,6 @@ class DiscoverViewModel: ViewModel() {
     private val _navigateToSelectedTvShow = MutableLiveData<TvShow>()
     val navigateToSelectedTvShow: LiveData<TvShow>
         get() = _navigateToSelectedTvShow
-
-
-    private var viewModelJob = Job()
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-
-
-
-
-
-
-
-
 
 
 }

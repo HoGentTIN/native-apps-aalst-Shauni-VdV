@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.django.R
 import com.example.django.adapters.TvGridAdapter
 import com.example.django.databinding.FragmentDiscoverTvshowsBinding
+import com.example.django.ui.fragment.discover.DiscoverFragmentDirections
 
 
 class DiscoverTvShowsFragment : Fragment() {
@@ -61,7 +62,7 @@ class DiscoverTvShowsFragment : Fragment() {
         viewModel.navigateToSelectedTvShow.observe(this, Observer {
             if ( null != it ) {
                 // Must find the NavController from the Fragment
-                this.findNavController().navigate(DiscoverTvShowsFragmentDirections.showTvShowDetail(it))
+                this.findNavController().navigate(DiscoverFragmentDirections.showTvShowDetail(it))
                 // Tell the ViewModel we've made the navigate call to prevent multiple navigation
                 viewModel.displayTvShowDetailsComplete()
             }

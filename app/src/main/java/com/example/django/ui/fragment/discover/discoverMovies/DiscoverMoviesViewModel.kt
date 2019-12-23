@@ -30,7 +30,6 @@ class DiscoverMoviesViewModel : ViewModel() {
 
     }
 
-    enum class ApiStatus { LOADING, ERROR, DONE }
 
     @Inject
     lateinit var movieRepository: IMovieRepository

@@ -9,7 +9,12 @@
         android:id="@+id/discoverFragment"
         android:name="com.example.django.ui.fragment.discover.DiscoverFragment"
         android:label="DiscoverFragment" >
-
+        <action
+            android:id="@+id/showTvShowDetail"
+            app:destination="@id/detailTvShowFragment" />
+        <action
+            android:id="@+id/showMovieDetail"
+            app:destination="@id/detailMovieFragment" />
     </fragment>
 
 
@@ -17,12 +22,6 @@
     android:id="@+id/discoverMoviesFragment"
     android:name="com.example.django.ui.fragment.discover.discoverMovies.DiscoverMoviesFragment"
     android:label="DiscoverMoviesFragment">
-    <action
-        android:id="@+id/showMovieDetail"
-        app:destination="@id/detailMovieFragment" />
-    <action
-        android:id="@+id/showTvShowDetail"
-        app:destination="@id/detailTvShowFragment" />
     </fragment>
 
 
@@ -30,9 +29,6 @@
         android:id="@+id/discoverTvShowsFragment"
         android:name="com.example.django.ui.fragment.discover.discoverTvShows.DiscoverTvShowsFragment"
         android:label="DiscoverTvShowsFragment">
-        <action
-            android:id="@+id/showTvShowDetail"
-            app:destination="@id/detailTvShowFragment" />
     </fragment>
 
 

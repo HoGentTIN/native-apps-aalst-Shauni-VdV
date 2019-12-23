@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.django.R
 import com.example.django.adapters.MovieGridAdapter
 import com.example.django.databinding.FragmentDiscoverMoviesBinding
+import com.example.django.ui.fragment.discover.DiscoverFragmentDirections
 
 class DiscoverMoviesFragment : Fragment() {
 
@@ -75,7 +76,9 @@ class DiscoverMoviesFragment : Fragment() {
         viewModel.navigateToSelectedMovie.observe(this, Observer {
             if ( null != it ) {
                 // Must find the NavController from the Fragment
-                this.findNavController().navigate(DiscoverMoviesFragmentDirections.showMovieDetail(it))
+                //if (findNavController().currentDestination?.id == R.id.discoverMoviesFragment) {
+                 //   findNavController().navigate(DiscoverMoviesFragmentDirections.showMovieDetail(it))}
+                this.findNavController().navigate(DiscoverFragmentDirections.showMovieDetail(it))
                 // Tell the ViewModel we've made the navigate call to prevent multiple navigation
                 viewModel.displayMovieDetailsComplete()
             }
