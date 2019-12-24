@@ -51,7 +51,7 @@
 
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.django.ui.fragment.SearchFragment"
+        android:name="com.example.django.ui.fragment.search.SearchFragment"
         android:label="SearchFragment" />
 
     <fragment

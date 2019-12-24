@@ -15,6 +15,7 @@ import com.example.django.ui.fragment.discover.DiscoverViewModel
 import com.example.django.ui.fragment.favorites.FavoritesViewModel
 import com.example.django.ui.fragment.favorites.favoriteMovies.FavoritesMoviesViewModel
 import com.example.django.ui.fragment.favorites.favoriteTvShows.FavoritesTvShowsViewModel
+import com.example.django.ui.fragment.search.SearchViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -39,6 +40,9 @@ interface AppComponent {
     // Detail Pages ----
     fun inject(detailMovieViewModel: DetailMovieViewModel)
     fun inject(detailTvShowViewModel: DetailTvShowViewModel)
+
+    // Search ----
+    fun inject(searchViewModel: SearchViewModel)
 
     //PagerAdapter
     fun inject(discoverPagerAdapter: DiscoverPagerAdapter)
