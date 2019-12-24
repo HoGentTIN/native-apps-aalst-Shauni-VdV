@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = "tv")
+@Entity(tableName = "tvshow_table")
 data class TvShow(
     @PrimaryKey(autoGenerate = false)
     val id: String,
@@ -19,12 +19,14 @@ data class TvShow(
     val original_language: String? = null,
     val vote_average: Double? = null,
     val overview: String? = null,
-    val poster_path: String? = null
+    val poster_path: String? = null,
+    var isFavorite: Boolean = false
+
 ) : Parcelable {
     fun getImg(): String {
         return "https://image.tmdb.org/t/p/w500/" + poster_path
     }
     fun getBackdrop() : String {
-        return return "https://image.tmdb.org/t/p/w500/" + backdrop_path
+        return "https://image.tmdb.org/t/p/w500/" + backdrop_path
     }
 }

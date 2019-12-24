@@ -15,4 +15,12 @@ class DatabaseModule(private val application: Context){
     internal fun provideMovieRepository(): IMovieRepository {
         return MovieRepository(application)
     }
+
+    @Provides
+    @Singleton
+    internal fun provideTvShowRepository(): ITvShowRepository {
+        return TvShowRepository(application)
+    }
+
+
 }

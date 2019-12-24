@@ -1,4 +1,4 @@
-package com.example.django.ui.fragment.discover
+package com.example.django.ui.fragment.favorites
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,15 +7,11 @@ import com.example.django.App
 import com.example.django.model.Movie
 import com.example.django.model.TvShow
 
+class FavoritesViewModel : ViewModel(){
 
-
-class DiscoverViewModel: ViewModel() {
     init {
         App.appComponent.inject(this)
     }
-
-    enum class ApiStatus { LOADING, ERROR, DONE }
-
 
     private val _navigateToSelectedMovie = MutableLiveData<Movie>()
     val navigateToSelectedMovie: LiveData<Movie>
@@ -24,6 +20,5 @@ class DiscoverViewModel: ViewModel() {
     private val _navigateToSelectedTvShow = MutableLiveData<TvShow>()
     val navigateToSelectedTvShow: LiveData<TvShow>
         get() = _navigateToSelectedTvShow
-
 
 }

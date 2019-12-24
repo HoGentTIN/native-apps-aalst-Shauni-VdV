@@ -7,8 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.django.App
 import com.example.django.model.TvShow
-import com.example.django.model.repository.IMovieRepository
-import com.example.django.network.MovieService
 import com.example.django.network.TvService
 import com.example.django.ui.fragment.discover.DiscoverViewModel
 import kotlinx.coroutines.launch
@@ -46,8 +44,6 @@ class DiscoverTvShowsViewModel : ViewModel() {
         Log.d("ViewModel", "GetPopularTvShows called")
         viewModelScope.launch {
             var any = tvService.getPopularShows()
-            Log.i("response", any.toString())
-            Log.i("list", any.results.toString())
             _popularTvShows.value = any.results
         }
     }

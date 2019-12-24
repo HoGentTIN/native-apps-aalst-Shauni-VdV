@@ -3,10 +3,10 @@ package com.example.django.adapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.example.django.ui.fragment.discover.discoverMovies.DiscoverMoviesFragment
-import com.example.django.ui.fragment.discover.discoverTvShows.DiscoverTvShowsFragment
+import com.example.django.ui.fragment.favorites.favoriteMovies.FavoritesMoviesFragment
+import com.example.django.ui.fragment.favorites.favoriteTvShows.FavoritesTvShowsFragment
 
-class DiscoverPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
+class FavoritesPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
 
     override fun getCount(): Int {
         return 2
@@ -14,9 +14,9 @@ class DiscoverPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePage
 
     override fun getItem(position: Int): Fragment {
         if( position == 0){
-            return DiscoverMoviesFragment()
+            return FavoritesMoviesFragment()
         }
-        return DiscoverTvShowsFragment()
+        return FavoritesTvShowsFragment()
     }
 
     override fun getPageTitle(position: Int): CharSequence {

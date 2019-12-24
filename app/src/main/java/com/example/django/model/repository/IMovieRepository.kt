@@ -18,6 +18,8 @@ interface IMovieRepository {
 
     suspend fun getTopRatedMovies(): MovieListResponse
 
+    suspend fun getFavoriteMovies(): List<Movie>
+
 
     suspend fun insertMovieDatabase(
         list: List<Movie>
@@ -40,10 +42,6 @@ interface IMovieRepository {
 
     suspend fun getMovieFromDao(id: String): Movie?
 
-    suspend fun insertMovieInDao(movie: Movie)
-
-    suspend fun insertMoviesInDao(list: List<Movie>)
-
     suspend fun updateDao(movie: Movie)
 
     suspend fun deleteMovieFromDao(movie: Movie)
@@ -51,8 +49,4 @@ interface IMovieRepository {
     suspend fun deleteMovieFromDaoById(id: String)
 
     suspend fun deleteAllFromDao()
-
-    suspend fun getMoviePageFromDao(pageSize: Int, pageIndex: Int): List<Movie>?
-
-    suspend fun getFavoriteFromDao(pageSize: Int, pageIndex: Int): List<Movie>?
 }

@@ -1,29 +1,20 @@
 package com.example.django.model.repository
 
 import android.content.Context
-import android.util.Log
 import com.example.django.App
 import com.example.django.db.MovieDatabase
 import com.example.django.db.MovieDatabaseDao
 import com.example.django.model.Movie
 import com.example.django.network.MovieService
 import com.example.django.network.response.MovieListResponse
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.lang.Exception
 import javax.inject.Inject
-import kotlinx.coroutines.Deferred
 import android.net.ConnectivityManager
+import android.util.Log
 import android.widget.Toast
 
 
 @Suppress("DEPRECATION")
 class MovieRepository(context : Context) : IMovieRepository {
-
-
-
 
     @Inject
     lateinit var movieService : MovieService
@@ -40,7 +31,15 @@ class MovieRepository(context : Context) : IMovieRepository {
 
         if (isInternetAvailable(context)) {
             var result =  movieService.getDiscoverMovies()
-            insertMovieDatabase(result.results!!)
+
+            var moviesInDao : List<Movie> = movieDao.getMovieList()!!
+
+            for (n in result.results!!){
+                if (!moviesInDao.contains(n)){
+                    movieDao.insert(n)
+                }
+            }
+            Log.d("Dao",  movieDao.getMovieList()?.size.toString())
             return result
 
         } else {
@@ -51,17 +50,42 @@ class MovieRepository(context : Context) : IMovieRepository {
 
     override suspend fun getLatestMovies(): MovieListResponse {
         var result = movieService.getLatestMovies()
-        insertMovieDatabase(result.results!!)
+        var moviesInDao : List<Movie> = movieDao.getMovieList()!!
+
+        for (n in result.results!!){
+                if (!moviesInDao.contains(n)){
+                    movieDao.insert(n)
+                }
+        }
+        Log.d("Dao",  movieDao.getMovieList()?.size.toString())
+
         return result
     }
 
     override suspend fun getTopRatedMovies(): MovieListResponse {
         var result = movieService.getTopRatedMovies()
-        insertMovieDatabase(result.results!!)
+        var moviesInDao : List<Movie> = movieDao.getMovieList()!!
+
+        for (n in result.results!!){
+            if (!moviesInDao.contains(n)){
+                movieDao.insert(n)
+            }
+        }
+        Log.d("Dao",  movieDao.getMovieList()?.size.toString())
+
         return result
     }
 
+    override suspend fun getFavoriteMovies(): List<Movie> {
+        return movieDao.getFavoriteMovies()
+    }
+
+
     override suspend fun insertMovieDatabase(list: List<Movie>) {
+        list.forEach {
+            movieDao.insert(it)
+
+        }
         movieDao.insert(list)
     }
 
@@ -77,13 +101,6 @@ class MovieRepository(context : Context) : IMovieRepository {
         return movieDao.getMovie(id)
     }
 
-    override suspend fun insertMovieInDao(movie: Movie) {
-        return movieDao.insert(movie)
-    }
-
-    override suspend fun insertMoviesInDao(list: List<Movie>) {
-        return movieDao.insert(list)
-    }
 
     override suspend fun updateDao(movie: Movie) {
         return movieDao.update(movie)
@@ -100,15 +117,6 @@ class MovieRepository(context : Context) : IMovieRepository {
     override suspend fun deleteAllFromDao() {
         return movieDao.deleteAll()
     }
-
-    override suspend fun getMoviePageFromDao(pageSize: Int, pageIndex: Int): List<Movie>? {
-        return movieDao.getMoviePage(pageSize, pageIndex)
-    }
-
-    override suspend fun getFavoriteFromDao(pageSize: Int, pageIndex: Int): List<Movie>? {
-        return movieDao.getFavorite(pageSize = pageSize, pageIndex = pageIndex)
-    }
-
 
     internal fun isInternetAvailable(context : Context): Boolean {
         val mConMgr = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

@@ -18,10 +18,21 @@ interface MovieDatabaseDao {
     @Query("SELECT * FROM movie_table WHERE id = :id")
     suspend fun getMovie(id: String): Movie?
 
-    @Insert(onConflict = REPLACE)
+    @Query("SELECT * FROM movie_table WHERE isFavorite = 1")
+    suspend fun getFavoriteMovies() : List<Movie>
+
+    @Query("UPDATE movie_table SET isFavorite = 1 WHERE id = :id")
+    fun addMovieToFavorites(id: String)
+
+    @Query("UPDATE movie_table SET isFavorite = 0 WHERE id = :id")
+    fun deleteMovieFromFavorites(id: String)
+
+
+
+    @Insert(onConflict = IGNORE)
     suspend fun insert(movie: Movie)
 
-    @Insert(onConflict = REPLACE)
+    @Insert(onConflict = IGNORE)
     suspend fun insert(list: List<Movie>)
 
     @Insert(onConflict = REPLACE)
@@ -36,17 +47,4 @@ interface MovieDatabaseDao {
     @Query("DELETE FROM movie_table")
     suspend fun deleteAll()
 
-    /*
-    @Query("SELECT * FROM playlist " +
-    "WHERE playlist_title LIKE '% :playlistTitle %' " +
-    "GROUP BY playlist_title " +
-    "ORDER BY playlist_title " +
-    "LIMIT :limit")
-    List<IPlaylist> searchPlaylists(String playlistTitle, int limit);
-     */
-    @Query("SELECT * FROM movie_table LIMIT :pageSize OFFSET :pageIndex")
-    suspend fun getMoviePage(pageSize: Int, pageIndex: Int): List<Movie>?
-
-    @Query("SELECT * FROM movie_table WHERE isFavorite = 1 LIMIT :pageSize OFFSET ((:pageIndex-1)*:pageSize) ")
-    suspend fun getFavorite(pageSize: Int, pageIndex: Int): List<Movie>?
-}
+   }
