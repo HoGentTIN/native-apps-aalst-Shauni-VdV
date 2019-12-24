@@ -16,7 +16,7 @@
             android:layout_width="150dp"
             android:layout_height="300dp"
             android:padding="2dp"
-            app:imageUrl="@{property.getPoster()}"
+            app:imageUrl="@{property.getProfile()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
