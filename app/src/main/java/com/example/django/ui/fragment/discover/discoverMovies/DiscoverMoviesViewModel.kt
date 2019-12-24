@@ -62,8 +62,7 @@ class DiscoverMoviesViewModel : ViewModel() {
         Log.d("ViewModel", "GetPopularMovies called")
         viewModelScope.launch {
             var any = movieRepository.getPopularMovies()
-            Log.i("response", any.toString())
-            Log.i("list", any.results.toString())
+
             _popularMovies.value = any.results
         }
     }
@@ -73,8 +72,6 @@ class DiscoverMoviesViewModel : ViewModel() {
         Log.d("ViewModel", "GetPopularMovies called")
         viewModelScope.launch {
             var any = movieRepository.getLatestMovies()
-            Log.i("response", any.toString())
-            Log.i("list", any.results.toString())
             _latestMovies.value = any.results
         }
     }
@@ -84,8 +81,6 @@ class DiscoverMoviesViewModel : ViewModel() {
         Log.d("ViewModel", "GetTopRatedMovies called")
         viewModelScope.launch {
             var any = movieRepository.getTopRatedMovies()
-            Log.i("response", any.toString())
-            Log.i("list", any.results.toString())
             _topRatedMovies.value = any.results
         }
     }

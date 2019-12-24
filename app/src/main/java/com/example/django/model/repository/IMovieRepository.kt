@@ -42,10 +42,6 @@ interface IMovieRepository {
 
     suspend fun getMovieFromDao(id: String): Movie?
 
-    suspend fun insertMovieInDao(movie: Movie)
-
-    suspend fun insertMoviesInDao(list: List<Movie>)
-
     suspend fun updateDao(movie: Movie)
 
     suspend fun deleteMovieFromDao(movie: Movie)

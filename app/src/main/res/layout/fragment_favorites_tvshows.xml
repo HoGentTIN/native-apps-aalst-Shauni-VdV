@@ -31,6 +31,6 @@
             app:spanCount="2"
             tools:itemCount="20"
             tools:listitem="@layout/movie_grid_item" />
-        
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,6 +1,7 @@
 package com.example.django.ui.fragment.detail
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,6 +12,7 @@ import com.example.django.model.Movie
 
 class DetailMovieViewModel(movie: Movie, app: Application) : AndroidViewModel(app) {
 
+    var movie = movie
     init {
         App.appComponent.inject(this)
     }
@@ -24,6 +26,8 @@ class DetailMovieViewModel(movie: Movie, app: Application) : AndroidViewModel(ap
     // Initialize the _selectedMovie MutableLiveData
     init {
         _selectedMovie.value = movie
+        Log.d("IsFavorite", movie.isFavorite.toString())
+        Log.d("Id", movie.id)
     }
 
 }

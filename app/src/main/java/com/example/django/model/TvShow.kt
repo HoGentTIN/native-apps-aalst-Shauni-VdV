@@ -20,7 +20,7 @@ data class TvShow(
     val vote_average: Double? = null,
     val overview: String? = null,
     val poster_path: String? = null,
-    val isFavorite: Boolean? = false
+    var isFavorite: Boolean = false
 
 ) : Parcelable {
     fun getImg(): String {

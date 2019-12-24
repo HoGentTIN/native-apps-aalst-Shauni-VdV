@@ -16,6 +16,7 @@ import com.example.django.databinding.FragmentFavoritesMoviesBinding
 import com.example.django.ui.fragment.favorites.FavoritesFragmentDirections
 
 class FavoritesMoviesFragment : Fragment() {
+
     private val viewModel: FavoritesMoviesViewModel by lazy {
         ViewModelProviders.of(this).get(FavoritesMoviesViewModel::class.java)
     }
