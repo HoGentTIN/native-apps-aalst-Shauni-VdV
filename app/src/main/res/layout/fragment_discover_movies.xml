@@ -26,6 +26,7 @@
             <!-- Popular movies -->
             <TextView
                 android:id="@+id/popular_movies_textView"
+                style="@style/subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="10sp"
@@ -57,6 +58,7 @@
             <!-- Top rated movies -->
             <TextView
                 android:id="@+id/topRated_movies_textView"
+                style="@style/subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="-10dp"
@@ -88,6 +90,7 @@
             <!-- Latest movies -->
             <TextView
                 android:id="@+id/latest_movies_textView"
+                style="@style/subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Now in theaters"

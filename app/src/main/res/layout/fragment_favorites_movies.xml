@@ -20,9 +20,10 @@
                     android:id="@+id/favorite_movies_grid"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:adjustViewBounds="false"
                     android:clipToPadding="false"
-                    android:padding="-10dp"
+                    android:padding="1dp"
+                    android:layout_margin="1dp"
+
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"

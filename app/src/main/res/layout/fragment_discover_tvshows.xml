@@ -24,6 +24,7 @@
 
                 <!-- Popular TV Shows -->
                 <TextView
+                    style="@style/subtitle"
                     android:id="@+id/popular_shows_textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

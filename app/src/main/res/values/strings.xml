@@ -5,8 +5,9 @@
     // NavBar
     <string name="navbar_home">Home</string>
     <string name="navbar_favs">Favorites</string>
-    <string name="navbar_search">Search</string>
+    <string name="navbar_about">About</string>
     <string name="navbar_discover">Discover</string>
+    <string name="navbar_search">Search</string>
 
     <string name="discover_tab_text_movie">Movies</string>
     <string name="discover_tab_text_tv">TV Shows</string>
