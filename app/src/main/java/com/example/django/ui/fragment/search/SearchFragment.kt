@@ -8,13 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import com.example.django.R
 import com.example.django.adapters.SearchAdapter
 import com.example.django.databinding.FragmentSearchBinding
 import com.example.django.model.helpers.Searchable
+import com.example.django.ui.fragment.discover.DiscoverFragmentDirections
 import com.example.django.ui.fragment.favorites.favoriteMovies.FavoritesMoviesViewModel
+import io.reactivex.BackpressureStrategy
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -31,8 +35,45 @@ class SearchFragment : BaseSearchFragment(), SearchInterface {
     private var currentPaginationSubscription: Disposable? = null
 
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        viewModel.navigateToSelectedMovie.observe(this, Observer {
+            if ( null != it ) {
+                 this.findNavController().navigate(DiscoverFragmentDirections.showMovieDetail(it))
+                    viewModel.displayMovieDetailsComplete()
+            }
+        })
+
+        viewModel.navigateToSelectedTvShow.observe(this, Observer {
+            if ( null != it ) {
+                this.findNavController().navigate(DiscoverFragmentDirections.showTvShowDetail(it))
+                viewModel.displayTvShowDetailsComplete()
+            }
+        })
+
+        viewModel.navigateToSelectedPerson.observe(this, Observer {
+            if ( null != it ) {
+                this.findNavController().navigate(DiscoverFragmentDirections.showPersonDetail(it))
+                viewModel.displayPersonDetailsComplete()
+            }
+        })
+
+
+
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+
 
         viewModel.query.onBackpressureDrop()
             .subscribeOn(Schedulers.io())
@@ -49,7 +90,7 @@ class SearchFragment : BaseSearchFragment(), SearchInterface {
 
                 paginator.onBackpressureDrop()
                     .concatMap {
-                        viewModel.getSearchResults(query, it).toFlowable()
+                        viewModel.getSearchResults(query, it).toFlowable(BackpressureStrategy.LATEST)
                             .subscribeOn(Schedulers.io())
                     }?.map {
                         it.results ?: listOf()

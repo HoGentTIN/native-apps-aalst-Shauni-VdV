@@ -15,6 +15,9 @@
         <action
             android:id="@+id/showMovieDetail"
             app:destination="@id/detailMovieFragment" />
+        <action
+            android:id="@+id/showPersonDetail"
+            app:destination="@+id/detailPersonFragment" />
     </fragment>
 
 
@@ -71,6 +74,16 @@
         <argument
             android:name="selectedShow"
             app:argType="com.example.django.model.TvShow"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailPersonFragment"
+        android:name="com.example.django.ui.fragment.detail.DetailPersonFragment"
+        android:label="DetailPersonFragment">
+        <argument
+            android:name="selectedPerson"
+            app:argType="com.example.django.model.Person"
             />
     </fragment>
 

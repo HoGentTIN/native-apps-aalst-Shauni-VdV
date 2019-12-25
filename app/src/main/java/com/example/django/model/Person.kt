@@ -31,6 +31,6 @@ data class Person(
 ): Parcelable, Searchable(PERSON){
 
     fun getProfile(): String {
-        return "https://image.tmdb.org/t/p/w500/" + profile_path
+        return "https://image.tmdb.org/t/p/w500/$profile_path"
     }
 }

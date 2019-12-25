@@ -9,6 +9,7 @@ import com.example.django.model.helpers.SearchableDeserializer
 import com.example.django.model.repository.MovieRepository
 import com.example.django.model.repository.TvShowRepository
 import com.example.django.ui.fragment.detail.DetailMovieViewModel
+import com.example.django.ui.fragment.detail.DetailPersonViewModel
 import com.example.django.ui.fragment.detail.DetailTvShowViewModel
 import com.example.django.ui.fragment.discover.discoverMovies.DiscoverMoviesViewModel
 import com.example.django.ui.fragment.discover.discoverTvShows.DiscoverTvShowsViewModel
@@ -41,6 +42,7 @@ interface AppComponent {
     // Detail Pages ----
     fun inject(detailMovieViewModel: DetailMovieViewModel)
     fun inject(detailTvShowViewModel: DetailTvShowViewModel)
+    fun inject(detailPersonViewModel: DetailPersonViewModel)
 
     // Search ----
     fun inject(searchViewModel: SearchViewModel)
