@@ -3,10 +3,14 @@ package com.example.django.injection.module
 import android.content.Context
 
 import com.example.django.BuildConfig
+import com.example.django.model.helpers.Searchable
+import com.example.django.model.helpers.SearchableDeserializer
 
 import com.example.django.network.MovieService
 import com.example.django.network.TvService
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers
@@ -40,8 +44,11 @@ class NetworkModule(private val context: Context) {
             .build()
 
         val gson = GsonBuilder()
+            .registerTypeAdapter(Searchable::class.java, SearchableDeserializer())
             .setLenient()
             .create()
+
+
 
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
@@ -50,7 +57,6 @@ class NetworkModule(private val context: Context) {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
     }
-
 
     private val serviceInterceptor: Interceptor =
         Interceptor { chain ->
@@ -65,3 +71,7 @@ class NetworkModule(private val context: Context) {
             chain.proceed(newRequest)
         }
 }
+
+
+typealias AndroidPair<T,U> = androidx.core.util.Pair<T,U>
+

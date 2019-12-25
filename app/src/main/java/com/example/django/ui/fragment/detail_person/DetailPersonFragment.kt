@@ -6,23 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.example.django.databinding.FragmentTvshowDetailBinding
+import com.example.django.databinding.FragmentPersonDetailBinding
 
 
-class DetailTvShowFragment : Fragment() {
+class DetailPersonFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val application = requireNotNull(activity).application
 
-        val binding = FragmentTvshowDetailBinding.inflate(inflater)
+        val binding = FragmentPersonDetailBinding.inflate(inflater)
         binding.setLifecycleOwner(this)
 
-        val tvShow = DetailTvShowFragmentArgs.fromBundle(arguments!!).selectedShow
+        val person = DetailPersonFragmentArgs.fromBundle(arguments!!).selectedPerson
 
-        val viewModelFactory = DetailTvShowViewModelFactory(tvShow, application)
+        val viewModelFactory = DetailPersonViewModelFactory(person, application)
 
         binding.viewModel = ViewModelProviders.of(
-            this, viewModelFactory).get(DetailTvShowViewModel::class.java)
+            this, viewModelFactory).get(DetailPersonViewModel::class.java)
         return binding.root
     }
 
