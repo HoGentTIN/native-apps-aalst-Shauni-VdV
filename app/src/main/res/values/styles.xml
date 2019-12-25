@@ -13,12 +13,18 @@
         <!-- Fonts -->
         <item name="fontFamily">@font/open_sans</item>
         <item name="android:fontFamily">@font/open_sans</item>
+    </style>
 
+    <!-- TEXT -->
+    <style name="whiteText">
+        <item name="android:textColor">@color/colorWhite</item>
     </style>
 
     <style name="subtitle">
         <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingLeft">5dp</item>
     </style>
+
 
     <!-- LinearLayout Style : padding 20dp -->
     <style name="style_linearlayout">
@@ -26,6 +32,8 @@
         <item name="android:paddingRight">20dp</item>
     </style>
 
+
+    <!-- TAB LAYOUT -->
     <style name="AppTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabIndicatorColor">@color/colorPrimary</item>
         <item name="tabIndicatorHeight">4dp</item>
@@ -36,12 +44,15 @@
         <item name="tabSelectedTextColor">@color/colorPrimary</item>
     </style>
 
-    <!-- for text -->
+    <!-- TEXT IN TAB LAYOUT -->
     <style name="AppTabTextAppearance" parent="TextAppearance.Design.Tab">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="textAllCaps">false</item>
     </style>
+
+
+    <!-- BOTTOM NAVIGATION -->
 
     <style name="BottomNavigation">
         <item name="itemIconTint">@drawable/bottom_nav_icon_selector</item>
@@ -49,4 +60,13 @@
         <item name="android:itemBackground">@color/colorBackground</item>
     </style>
 
+
+    <!-- STYLES FOR DETAIL PAGES -->
+    <style name="DetailTitle">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="DetailRelease">
+        <item name="android:textSize">13sp</item>
+    </style>
 </resources>
