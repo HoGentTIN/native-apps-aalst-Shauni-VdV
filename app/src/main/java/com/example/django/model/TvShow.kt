@@ -3,6 +3,7 @@ package com.example.django.model
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.django.model.helpers.Searchable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -22,7 +23,7 @@ data class TvShow(
     val poster_path: String? = null,
     var isFavorite: Boolean = false
 
-) : Parcelable {
+) : Parcelable, Searchable(TV){
     fun getImg(): String {
         return "https://image.tmdb.org/t/p/w500/" + poster_path
     }

@@ -8,7 +8,7 @@ abstract class Searchable(
     var mediaType: String? = null,
 
     @Ignore
-    var _id: String? = null
+    var _id: Int? = null
 
 ) {
     companion object {

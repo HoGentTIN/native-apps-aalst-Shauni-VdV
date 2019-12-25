@@ -25,6 +25,6 @@ interface MovieService {
     @GET("3/movie/{movie_id}")
     fun getMovieById(@QueryMap hashMap: HashMap<String, String> = HashMap()): Movie
 
-    @GET("search/multi")
+    @GET("3/search/multi")
     fun getSearchResults(@Query("query") query: String, @Query("page") page: Int) : Single<SearchResponse>
 }

@@ -3,6 +3,7 @@ package com.example.django.model
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.django.model.helpers.Searchable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -30,7 +31,7 @@ data class Movie(
     val vote_average: Double? = null,
     val vote_count: Int? = null,
     var isFavorite: Boolean
-    ): Parcelable {
+    ): Parcelable, Searchable(MOVIE) {
 
     fun getBackdrop() : String {
         return "https://image.tmdb.org/t/p/w500/" + backdrop_path

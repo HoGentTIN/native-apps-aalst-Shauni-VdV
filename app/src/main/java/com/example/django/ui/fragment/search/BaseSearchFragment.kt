@@ -93,7 +93,7 @@ abstract class BaseSearchFragment : Fragment(){
     }
 
     protected fun handleError(t: Throwable){
-        Log.d("Error in list: ", t.message)
+        Log.d("Error in list: ", t.message + Log.getStackTraceString(t))
         finishLoading()
         isLoading = false
         setPageNumber(getPageNumber()-1)

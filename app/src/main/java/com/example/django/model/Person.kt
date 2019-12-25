@@ -3,6 +3,7 @@ package com.example.django.model
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.django.model.helpers.Searchable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -27,7 +28,7 @@ data class Person(
     val imdb_id: String,
     val homepage: String? = null
 
-): Parcelable {
+): Parcelable, Searchable(PERSON){
 
     fun getProfile(): String {
         return "https://image.tmdb.org/t/p/w500/" + profile_path
