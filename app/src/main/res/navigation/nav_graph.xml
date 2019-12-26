@@ -27,6 +27,13 @@
     android:label="DiscoverMoviesFragment">
     </fragment>
 
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.django.ui.fragment.about.AboutFragment"
+        android:label="AboutFragment">
+    </fragment>
+
+
 
     <fragment
         android:id="@+id/discoverTvShowsFragment"
