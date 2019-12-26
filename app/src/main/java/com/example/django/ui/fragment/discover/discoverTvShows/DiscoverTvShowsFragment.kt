@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.django.R
 import com.example.django.adapters.TvGridAdapter
 import com.example.django.databinding.FragmentDiscoverTvshowsBinding
@@ -49,15 +48,15 @@ class DiscoverTvShowsFragment : Fragment() {
         val layoutManagerLatestTvShows =
             LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
-        val recyclerViewPopularTvShows = binding.popularShowsGrid as RecyclerView
+        val recyclerViewPopularTvShows = binding.popularShowsGrid
         recyclerViewPopularTvShows.setHasFixedSize(false)
         recyclerViewPopularTvShows.setLayoutManager(layoutManagerPopularTvShows)
 
-        val recyclerViewTopRatedTvShows = binding.topRatedShowsGrid as RecyclerView
+        val recyclerViewTopRatedTvShows = binding.topRatedShowsGrid
         recyclerViewTopRatedTvShows.setHasFixedSize(false)
         recyclerViewTopRatedTvShows.setLayoutManager(layoutManagerTopRatedTvShows)
 
-        val recyclerViewLatestTvShows = binding.latestShowsGrid as RecyclerView
+        val recyclerViewLatestTvShows = binding.latestShowsGrid
         recyclerViewLatestTvShows.setHasFixedSize(false)
         recyclerViewLatestTvShows.setLayoutManager(layoutManagerLatestTvShows)
 

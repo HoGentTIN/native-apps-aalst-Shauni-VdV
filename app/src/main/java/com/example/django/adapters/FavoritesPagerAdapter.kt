@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.django.ui.fragment.favorites.favoriteMovies.FavoritesMoviesFragment
 import com.example.django.ui.fragment.favorites.favoriteTvShows.FavoritesTvShowsFragment
 
+@Suppress("DEPRECATION")
 class FavoritesPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
 
     override fun getCount(): Int {

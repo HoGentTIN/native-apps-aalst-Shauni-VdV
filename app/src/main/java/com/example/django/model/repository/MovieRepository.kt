@@ -12,6 +12,7 @@ import com.example.django.network.MovieService
 import com.example.django.network.response.MovieListResponse
 import javax.inject.Inject
 
+@Suppress("DEPRECATION")
 class MovieRepository(context: Context) : IMovieRepository {
 
     @Inject

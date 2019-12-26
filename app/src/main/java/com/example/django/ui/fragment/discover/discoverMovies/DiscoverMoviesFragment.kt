@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.django.R
 import com.example.django.adapters.MovieGridAdapter
 import com.example.django.databinding.FragmentDiscoverMoviesBinding
@@ -45,15 +44,15 @@ class DiscoverMoviesFragment : Fragment() {
 
         val layoutManagerTopRatedMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
-        val recyclerViewPopularMovies = binding.popularMoviesGrid as RecyclerView
+        val recyclerViewPopularMovies = binding.popularMoviesGrid
         recyclerViewPopularMovies.setHasFixedSize(false)
         recyclerViewPopularMovies.setLayoutManager(layoutManagerPopularMovies)
 
-        val recyclerViewLatestMovies = binding.latestMoviesGrid as RecyclerView
+        val recyclerViewLatestMovies = binding.latestMoviesGrid
         recyclerViewLatestMovies.setHasFixedSize(false)
         recyclerViewLatestMovies.setLayoutManager(layoutManagerLatestMovies)
 
-        val recyclerViewTopRatedMovies = binding.topRatedMoviesGrid as RecyclerView
+        val recyclerViewTopRatedMovies = binding.topRatedMoviesGrid
         recyclerViewTopRatedMovies.setHasFixedSize(false)
         recyclerViewTopRatedMovies.setLayoutManager(layoutManagerTopRatedMovies)
 

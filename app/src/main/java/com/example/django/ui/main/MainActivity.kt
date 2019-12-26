@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun search(text: String?) {
-        Log.d("subscriber", text)
+        Log.d("subscriber", text!!)
 
         if (navController.currentDestination?.id != R.id.searchFragment) {
             val args = Bundle().apply { putString(SearchInterface.QUERY, text) }

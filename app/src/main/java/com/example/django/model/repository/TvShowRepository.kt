@@ -12,6 +12,7 @@ import com.example.django.network.TvService
 import com.example.django.network.response.TvListResponse
 import javax.inject.Inject
 
+@Suppress("DEPRECATION")
 class TvShowRepository(context: Context) : ITvShowRepository {
 
     init {

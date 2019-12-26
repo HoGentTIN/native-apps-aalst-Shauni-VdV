@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.django.ui.fragment.discover.discoverMovies.DiscoverMoviesFragment
 import com.example.django.ui.fragment.discover.discoverTvShows.DiscoverTvShowsFragment
 
+@Suppress("DEPRECATION")
 class DiscoverPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
 
     override fun getCount(): Int {
