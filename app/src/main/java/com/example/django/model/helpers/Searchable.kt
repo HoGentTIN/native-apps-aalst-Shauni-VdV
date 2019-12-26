@@ -16,5 +16,4 @@ abstract class Searchable(
         const val TV = "tv"
         const val MOVIE = "movie"
     }
-
 }

@@ -9,10 +9,10 @@ import com.example.django.model.TvShow
 @Dao
 interface TvShowDatabaseDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(tvShow: TvShow)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(list: List<TvShow>)
 
     @Query("SELECT * FROM tvshow_table")
@@ -21,14 +21,12 @@ interface TvShowDatabaseDao {
     @Query("SELECT * FROM tvshow_table WHERE id = :id")
     suspend fun getTvShow(id: String): TvShow?
 
-    @Query("SELECT * FROM tvshow_table WHERE isFavorite")
-    suspend fun getFavoriteTvShows() : List<TvShow>
+    @Query("SELECT * FROM tvshow_table WHERE isFavorite = 1")
+    suspend fun getFavoriteTvShows(): List<TvShow>
 
     @Query("UPDATE tvshow_table SET isFavorite = 1 WHERE id = :id")
-    suspend fun addTvShowToFavorites(id: String)
+    fun addTvShowToFavorites(id: String)
 
     @Query("UPDATE tvshow_table SET isFavorite = 0 WHERE id = :id")
-    suspend fun deleteTvShowFromFavorites(id: String)
-
-
+    fun deleteTvShowFromFavorites(id: String)
 }

@@ -16,7 +16,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="0dp">
+            android:padding="3dp">
 
             <ImageView
                 android:id="@+id/main_photo_image"
@@ -36,11 +36,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@{viewModel.selectedTvShow.name}"
-                android:textColor="#de000000"
-                android:textSize="39sp"
+                style="@style/DetailTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/main_photo_image"
                 tools:text="The Lion King" />
+
+            <ImageView
+                android:id="@+id/favorite_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/app_name"
+                android:padding="10dp"
+                app:srcCompat="@drawable/ic_favorite_border_black_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/main_photo_image" />
+
 
             <TextView
                 android:id="@+id/show_releaseDate_text"
@@ -48,11 +60,33 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@{viewModel.selectedTvShow.first_air_date}"
-                android:textColor="#de000000"
-                android:textSize="20sp"
+                style="@style/DetailRelease"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/show_title_text"
                 tools:text="2001" />
+
+            <TextView
+                android:id="@+id/show_vote_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="4dp"
+                android:background="@drawable/round_rectangle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/show_releaseDate_text"
+                tools:text="5.5/10" />
+
+            <TextView
+                android:id="@+id/show_summary_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/show_vote_text"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="@{viewModel.selectedTvShow.overview}"
+                />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

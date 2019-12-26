@@ -7,7 +7,8 @@ import com.example.django.model.Person
 
 class DetailPersonViewModelFactory(
     private val person: Person,
-    private val application: Application) : ViewModelProvider.Factory {
+    private val application: Application
+) : ViewModelProvider.Factory {
         @Suppress("unchecked_cast")
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(DetailPersonViewModel::class.java)) {

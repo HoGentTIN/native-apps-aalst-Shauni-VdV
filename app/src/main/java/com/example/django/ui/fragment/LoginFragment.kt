@@ -11,10 +11,10 @@ import com.example.django.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
 
         activity?.setTitle("Login")
         val binding: FragmentLoginBinding = DataBindingUtil.inflate(

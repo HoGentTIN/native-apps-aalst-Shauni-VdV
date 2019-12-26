@@ -10,8 +10,8 @@ import com.example.django.model.Movie
 import com.example.django.model.repository.IMovieRepository
 import com.example.django.network.MovieService
 import com.example.django.ui.fragment.discover.DiscoverViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 class DiscoverMoviesViewModel : ViewModel() {
 
@@ -27,9 +27,7 @@ class DiscoverMoviesViewModel : ViewModel() {
 
         getTopRatedMovies()
         Log.d("ViewModel", "passed init after getTopRatedMovies()")
-
     }
-
 
     @Inject
     lateinit var movieRepository: IMovieRepository
@@ -52,12 +50,11 @@ class DiscoverMoviesViewModel : ViewModel() {
     val status: LiveData<DiscoverViewModel.ApiStatus>
         get() = _status
 
-
     private val _navigateToSelectedMovie = MutableLiveData<Movie>()
     val navigateToSelectedMovie: LiveData<Movie>
         get() = _navigateToSelectedMovie
 
-    private fun getPopularMovies(){
+    private fun getPopularMovies() {
 
         Log.d("ViewModel", "GetPopularMovies called")
         viewModelScope.launch {
@@ -67,7 +64,7 @@ class DiscoverMoviesViewModel : ViewModel() {
         }
     }
 
-    private fun getLatestMovies(){
+    private fun getLatestMovies() {
 
         Log.d("ViewModel", "GetPopularMovies called")
         viewModelScope.launch {
@@ -76,7 +73,7 @@ class DiscoverMoviesViewModel : ViewModel() {
         }
     }
 
-    private fun getTopRatedMovies(){
+    private fun getTopRatedMovies() {
 
         Log.d("ViewModel", "GetTopRatedMovies called")
         viewModelScope.launch {
@@ -92,5 +89,4 @@ class DiscoverMoviesViewModel : ViewModel() {
     fun displayMovieDetailsComplete() {
         _navigateToSelectedMovie.value = null
     }
-
 }

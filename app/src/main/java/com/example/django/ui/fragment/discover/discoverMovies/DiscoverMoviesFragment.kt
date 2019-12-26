@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.django.R
 import com.example.django.adapters.MovieGridAdapter
 import com.example.django.databinding.FragmentDiscoverMoviesBinding
@@ -23,36 +22,37 @@ class DiscoverMoviesFragment : Fragment() {
         ViewModelProviders.of(this).get(DiscoverMoviesViewModel::class.java)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         Log.i("Discover", "Movie Discover Fragment created")
 
-        val binding : FragmentDiscoverMoviesBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_discover_movies, container, false)
+        val binding: FragmentDiscoverMoviesBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_discover_movies, container, false)
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.lifecycleOwner = this
 
-
         // Giving the binding access to the DiscoverViewModel
         binding.viewModel = viewModel
 
-
         // Layout manager definitions
-        var layoutManagerPopularMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManagerPopularMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
-        var layoutManagerLatestMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManagerLatestMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
-        var layoutManagerTopRatedMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManagerTopRatedMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
-        val recyclerViewPopularMovies = binding.popularMoviesGrid as RecyclerView
+        val recyclerViewPopularMovies = binding.popularMoviesGrid
         recyclerViewPopularMovies.setHasFixedSize(false)
         recyclerViewPopularMovies.setLayoutManager(layoutManagerPopularMovies)
 
-        val recyclerViewLatestMovies = binding.latestMoviesGrid as RecyclerView
+        val recyclerViewLatestMovies = binding.latestMoviesGrid
         recyclerViewLatestMovies.setHasFixedSize(false)
         recyclerViewLatestMovies.setLayoutManager(layoutManagerLatestMovies)
 
-        val recyclerViewTopRatedMovies = binding.topRatedMoviesGrid as RecyclerView
+        val recyclerViewTopRatedMovies = binding.topRatedMoviesGrid
         recyclerViewTopRatedMovies.setHasFixedSize(false)
         recyclerViewTopRatedMovies.setLayoutManager(layoutManagerTopRatedMovies)
 
@@ -74,10 +74,8 @@ class DiscoverMoviesFragment : Fragment() {
         // After navigating, call displayPropertyDetailsComplete() so that the ViewModel is ready
         // for another navigation event.
         viewModel.navigateToSelectedMovie.observe(this, Observer {
-            if ( null != it ) {
+            if (null != it) {
                 // Must find the NavController from the Fragment
-                //if (findNavController().currentDestination?.id == R.id.discoverMoviesFragment) {
-                 //   findNavController().navigate(DiscoverMoviesFragmentDirections.showMovieDetail(it))}
                 this.findNavController().navigate(DiscoverFragmentDirections.showMovieDetail(it))
                 // Tell the ViewModel we've made the navigate call to prevent multiple navigation
                 viewModel.displayMovieDetailsComplete()

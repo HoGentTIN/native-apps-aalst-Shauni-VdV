@@ -52,7 +52,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:contentDescription="@string/app_name"
                 android:padding="10dp"
-                android:src="@drawable/ic_favorite_border_black_24dp"
+                app:srcCompat="@drawable/ic_favorite_border_black_24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/main_photo_image" />
 
@@ -67,6 +67,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/person_name_text"
                 tools:text="2001" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

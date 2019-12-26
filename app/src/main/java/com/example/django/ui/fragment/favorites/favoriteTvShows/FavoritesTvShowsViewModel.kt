@@ -1,5 +1,6 @@
 package com.example.django.ui.fragment.favorites.favoriteTvShows
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,10 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.django.App
 import com.example.django.model.TvShow
 import com.example.django.model.repository.ITvShowRepository
-import com.example.django.model.repository.TvShowRepository
-import com.example.django.ui.fragment.favorites.FavoritesViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 class FavoritesTvShowsViewModel : ViewModel() {
 
@@ -18,7 +17,6 @@ class FavoritesTvShowsViewModel : ViewModel() {
         App.appComponent.inject(this)
         getFavoriteTvShows()
     }
-
 
     @Inject
     lateinit var tvShowRepository: ITvShowRepository
@@ -35,6 +33,7 @@ class FavoritesTvShowsViewModel : ViewModel() {
         viewModelScope.launch {
             var result = tvShowRepository.getFavoriteTvShows()
             _favoriteShows.value = result
+            Log.d("FavoriteShows", result.size.toString())
         }
     }
 
@@ -44,5 +43,4 @@ class FavoritesTvShowsViewModel : ViewModel() {
     fun displayTvShowDetailsComplete() {
         _navigateToSelectedTvShow.value = null
     }
-
 }

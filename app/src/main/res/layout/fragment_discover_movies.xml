@@ -26,10 +26,11 @@
             <!-- Popular movies -->
             <TextView
                 android:id="@+id/popular_movies_textView"
+                style="@style/subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="10sp"
-                android:text="Popular Movies"
+                android:text="@string/popular"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/popular_movies_grid"
@@ -57,10 +58,11 @@
             <!-- Top rated movies -->
             <TextView
                 android:id="@+id/topRated_movies_textView"
+                style="@style/subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="-10dp"
-                android:text="Top Rated Movies"
+                android:text="@string/topRated"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/topRated_movies_grid"
@@ -88,9 +90,10 @@
             <!-- Latest movies -->
             <TextView
                 android:id="@+id/latest_movies_textView"
+                style="@style/subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Now in theaters"
+                android:text="@string/Latest"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/latest_movies_grid"

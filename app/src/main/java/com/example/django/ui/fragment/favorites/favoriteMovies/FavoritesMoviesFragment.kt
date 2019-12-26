@@ -21,9 +21,9 @@ class FavoritesMoviesFragment : Fragment() {
         ViewModelProviders.of(this).get(FavoritesMoviesViewModel::class.java)
     }
 
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         Log.i("Favorites", "Movie Favorites Fragment created")
@@ -34,23 +34,21 @@ class FavoritesMoviesFragment : Fragment() {
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.lifecycleOwner = this
 
-
         // Giving the binding access to the ViewModel
         binding.viewModel = viewModel
 
-        binding.favoriteMoviesGrid.adapter = MovieGridAdapter(MovieGridAdapter.OnClickListener{
+        binding.favoriteMoviesGrid.adapter = MovieGridAdapter(MovieGridAdapter.OnClickListener {
             viewModel.displayMovieDetails(it)
         })
 
         viewModel.navigateToSelectedMovie.observe(this, Observer {
-            if ( null != it ) {
+            if (null != it) {
                 // Must find the NavController from the Fragment
                 this.findNavController().navigate(FavoritesFragmentDirections.showMovieDetail(it))
                 // Tell the ViewModel we've made the navigate call to prevent multiple navigation
                 viewModel.displayMovieDetailsComplete()
             }
         })
-
 
         return binding.root
     }

@@ -9,16 +9,16 @@ import com.example.django.model.TvShow
 @Database(entities = [TvShow::class], version = 1, exportSchema = false)
 abstract class TvShowDatabase : RoomDatabase() {
 
-    abstract val tvShowDao : TvShowDatabaseDao
+    abstract val tvShowDao: TvShowDatabaseDao
 
-    companion object{
+    companion object {
         @Volatile
-        private var INSTANCE : TvShowDatabase?= null
+        private var INSTANCE: TvShowDatabase? = null
 
-        fun getInstance(context: Context) : TvShowDatabase{
-            synchronized(this){
+        fun getInstance(context: Context): TvShowDatabase {
+            synchronized(this) {
                 var instance = INSTANCE
-                if(instance == null) {
+                if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         TvShowDatabase::class.java,

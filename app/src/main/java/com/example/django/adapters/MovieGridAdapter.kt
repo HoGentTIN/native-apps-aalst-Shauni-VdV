@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.django.databinding.MovieGridItemBinding
 import com.example.django.model.Movie
 
-class MovieGridAdapter( val onClickListener: OnClickListener ) :
+class MovieGridAdapter(val onClickListener: OnClickListener) :
     ListAdapter<Movie, MovieGridAdapter.MovieViewHolder>(DiffCallback) {
     /**
      * The MovieViewHolder constructor takes the binding variable from the associated
      * GridViewItem, which nicely gives it access to the full [Movie] information.
      */
-    class MovieViewHolder(private var binding: MovieGridItemBinding):
+    class MovieViewHolder(private var binding: MovieGridItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
             binding.property = movie
@@ -41,8 +41,10 @@ class MovieGridAdapter( val onClickListener: OnClickListener ) :
     /**
      * Create new [RecyclerView] item views (invoked by the layout manager)
      */
-    override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): MovieViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MovieViewHolder {
         return MovieViewHolder(MovieGridItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
@@ -62,7 +64,7 @@ class MovieGridAdapter( val onClickListener: OnClickListener ) :
      * associated with the current item to the [onClick] function.
      * @param clickListener lambda that will be called with the current [Movie]
      */
-    class OnClickListener(val clickListener: (movie:Movie) -> Unit) {
-        fun onClick(movie:Movie) = clickListener(movie)
+    class OnClickListener(val clickListener: (movie: Movie) -> Unit) {
+        fun onClick(movie: Movie) = clickListener(movie)
     }
 }

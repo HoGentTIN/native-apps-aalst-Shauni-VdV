@@ -7,7 +7,7 @@ import com.example.django.App
 import com.example.django.model.Movie
 import com.example.django.model.TvShow
 
-class FavoritesViewModel : ViewModel(){
+class FavoritesViewModel : ViewModel() {
 
     init {
         App.appComponent.inject(this)
@@ -20,5 +20,4 @@ class FavoritesViewModel : ViewModel(){
     private val _navigateToSelectedTvShow = MutableLiveData<TvShow>()
     val navigateToSelectedTvShow: LiveData<TvShow>
         get() = _navigateToSelectedTvShow
-
 }

@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/tv_poster"
-            android:layout_width="150dp"
-            android:layout_height="300dp"
+            android:layout_width="170dp"
+            android:layout_height="310dp"
             android:padding="2dp"
             app:imageUrl="@{property.getImg()}"
             app:layout_constraintBottom_toBottomOf="parent"

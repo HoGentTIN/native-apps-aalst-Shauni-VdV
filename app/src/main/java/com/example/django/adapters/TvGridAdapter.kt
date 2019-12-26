@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.django.databinding.TvGridItemBinding
 import com.example.django.model.TvShow
 
-class TvGridAdapter( val onClickListener: OnClickListener ) :
+class TvGridAdapter(val onClickListener: OnClickListener) :
     ListAdapter<TvShow, TvGridAdapter.TvViewHolder>(DiffCallback) {
     /**
      * The MovieViewHolder constructor takes the binding variable from the associated
      * GridViewItem, which nicely gives it access to the full [TvShow] information.
      */
-    class TvViewHolder(private var binding: TvGridItemBinding):
+    class TvViewHolder(private var binding: TvGridItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(tvShow: TvShow) {
             binding.property = tvShow
@@ -42,8 +42,10 @@ class TvGridAdapter( val onClickListener: OnClickListener ) :
     /**
      * Create new [RecyclerView] item views (invoked by the layout manager)
      */
-    override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): TvViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): TvViewHolder {
         return TvViewHolder(TvGridItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 

@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.django.databinding.PersonGridItemBinding
 import com.example.django.model.Person
 
-class PersonGridAdapter( val onClickListener: OnClickListener ) :
+class PersonGridAdapter(val onClickListener: OnClickListener) :
     ListAdapter<Person, PersonGridAdapter.PersonViewHolder>(DiffCallback) {
     /**
      * The PersonViewHolder constructor takes the binding variable from the associated
      * GridViewItem, which nicely gives it access to the full [Person] information.
      */
-    class PersonViewHolder(private var binding: PersonGridItemBinding):
+    class PersonViewHolder(private var binding: PersonGridItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(person: Person) {
             binding.property = person
@@ -41,8 +41,10 @@ class PersonGridAdapter( val onClickListener: OnClickListener ) :
     /**
      * Create new [RecyclerView] item views (invoked by the layout manager)
      */
-    override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): PersonViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): PersonViewHolder {
         return PersonViewHolder(PersonGridItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 

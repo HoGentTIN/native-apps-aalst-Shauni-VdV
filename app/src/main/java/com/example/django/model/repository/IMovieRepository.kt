@@ -1,9 +1,7 @@
 package com.example.django.model.repository
 
-
 import com.example.django.model.Movie
 import com.example.django.network.response.MovieListResponse
-import kotlinx.coroutines.Deferred
 
 interface IMovieRepository {
 
@@ -19,7 +17,6 @@ interface IMovieRepository {
     suspend fun getTopRatedMovies(): MovieListResponse
 
     suspend fun getFavoriteMovies(): List<Movie>
-
 
     suspend fun insertMovieDatabase(
         list: List<Movie>
