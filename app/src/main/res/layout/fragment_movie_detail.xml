@@ -52,7 +52,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:contentDescription="@string/app_name"
                 android:padding="10dp"
-                android:src="@drawable/ic_favorite_border_black_24dp"
+                app:srcCompat="@drawable/ic_favorite_border_black_24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/main_photo_image" />
 
@@ -66,6 +66,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/movie_title_text"
                 tools:text="2001" />
+
+            <TextView
+                android:id="@+id/movie_vote_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="4dp"
+                android:background="@drawable/round_rectangle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movie_releaseDate_text"
+                tools:text="5.5/10" />
+
+            <TextView
+                android:id="@+id/movie_summary_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/movie_vote_text"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="@{viewModel.selectedMovie.overview}"
+                />
+
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

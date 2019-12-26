@@ -72,6 +72,8 @@ class DetailTvShowFragment : Fragment() {
             }
         })
 
+        binding.showVoteText.text = getString(R.string.vote_count, tvShow.vote_average.toString())
+
         return binding.root
     }
 }

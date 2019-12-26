@@ -18,5 +18,8 @@
     <string name="Latest">Latest</string>
 
 
+    <string name="vote_count">"%1$s / 10"</string>
+
+
 
 </resources>

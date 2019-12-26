@@ -73,6 +73,8 @@ class DetailMovieFragment : Fragment() {
             }
         })
 
+        binding.movieVoteText.text = getString(R.string.vote_count, movie.vote_average.toString())
+
         return binding.root
     }
 }
