@@ -43,4 +43,4 @@ interface MovieDatabaseDao {
 
     @Query("DELETE FROM movie_table")
     suspend fun deleteAll()
-   }
+}

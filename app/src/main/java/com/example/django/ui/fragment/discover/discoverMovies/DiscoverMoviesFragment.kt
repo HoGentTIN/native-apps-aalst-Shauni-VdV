@@ -77,8 +77,6 @@ class DiscoverMoviesFragment : Fragment() {
         viewModel.navigateToSelectedMovie.observe(this, Observer {
             if (null != it) {
                 // Must find the NavController from the Fragment
-                // if (findNavController().currentDestination?.id == R.id.discoverMoviesFragment) {
-                 //   findNavController().navigate(DiscoverMoviesFragmentDirections.showMovieDetail(it))}
                 this.findNavController().navigate(DiscoverFragmentDirections.showMovieDetail(it))
                 // Tell the ViewModel we've made the navigate call to prevent multiple navigation
                 viewModel.displayMovieDetailsComplete()

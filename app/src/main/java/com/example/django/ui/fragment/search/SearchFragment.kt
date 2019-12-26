@@ -34,7 +34,7 @@ class SearchFragment : BaseSearchFragment(), SearchInterface {
 
         viewModel.navigateToSelectedMovie.observe(this, Observer {
             if (null != it) {
-                 this.findNavController().navigate(DiscoverFragmentDirections.showMovieDetail(it))
+                this.findNavController().navigate(DiscoverFragmentDirections.showMovieDetail(it))
                     viewModel.displayMovieDetailsComplete()
             }
         })
