@@ -38,11 +38,11 @@ class DiscoverMoviesFragment : Fragment() {
 
 
         // Layout manager definitions
-        var layoutManagerPopularMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManagerPopularMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
-        var layoutManagerLatestMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManagerLatestMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
-        var layoutManagerTopRatedMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManagerTopRatedMovies = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
         val recyclerViewPopularMovies = binding.popularMoviesGrid as RecyclerView
         recyclerViewPopularMovies.setHasFixedSize(false)

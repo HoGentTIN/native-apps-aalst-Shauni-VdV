@@ -18,6 +18,8 @@ class DiscoverTvShowsViewModel : ViewModel() {
     init {
         App.appComponent.inject(this)
         getPopularTvShows()
+        getTopRatedTvShows()
+        getLatestTvShows()
 
     }
 
@@ -31,6 +33,14 @@ class DiscoverTvShowsViewModel : ViewModel() {
     private val _popularTvShows = MutableLiveData<List<TvShow>>()
     val popularTvShows: LiveData<List<TvShow>>
         get() = _popularTvShows
+
+    private val _topRatedTvShows = MutableLiveData<List<TvShow>>()
+    val topRatedTvShows: LiveData<List<TvShow>>
+        get() = _topRatedTvShows
+
+    private val _latestTvShows = MutableLiveData<List<TvShow>>()
+    val latestTvShows: LiveData<List<TvShow>>
+        get() = _latestTvShows
 
 
 
@@ -48,6 +58,24 @@ class DiscoverTvShowsViewModel : ViewModel() {
         viewModelScope.launch {
             var any = tvShowRepository.getPopularTvShows()
             _popularTvShows.value = any.results
+        }
+    }
+
+    private fun getTopRatedTvShows(){
+
+        Log.d("ViewModel", "GetTopRatedTvShows called")
+        viewModelScope.launch {
+            var any = tvShowRepository.getTopRatedTvShows()
+            _topRatedTvShows.value = any.results
+        }
+    }
+
+    private fun getLatestTvShows(){
+
+        Log.d("ViewModel", "GetTopRatedTvShows called")
+        viewModelScope.launch {
+            var any = tvShowRepository.getLatestTvShows()
+            _latestTvShows.value = any.results
         }
     }
 

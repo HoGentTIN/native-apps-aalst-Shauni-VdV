@@ -53,12 +53,15 @@ class TvShowRepository(context: Context) : ITvShowRepository {
     override suspend fun getLatestTvShows(): TvListResponse {
         if (isInternetAvailable(context)) {
             var result = tvService.getLatestShows()
-            var showsInDao : List<TvShow> = tvShowDao.getTvShowList()!!
+            Log.d("results", result.results.toString())
+            var showsInDao : List<TvShow>? = tvShowDao.getTvShowList()
 
             for(n in result.results!!){
-                if(!showsInDao.contains(n)){
-                    tvShowDao.insert(n)
-                }
+                if (showsInDao != null) {
+                    if(!showsInDao.contains(n)){
+                        tvShowDao.insert(n)
+                    }
+                } else tvShowDao.insert(result.results!!)
             }
             return result
 

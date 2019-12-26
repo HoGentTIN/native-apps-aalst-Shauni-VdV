@@ -28,7 +28,7 @@ class DiscoverTvShowsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.i("Discover", "Fragment created")
+        Log.i("Discover", "TV Fragment created")
 
         val binding: FragmentDiscoverTvshowsBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_discover_tvshows, container, false)
@@ -42,7 +42,13 @@ class DiscoverTvShowsFragment : Fragment() {
         binding.viewModel = viewModel
 
 
-        var layoutManagerPopularTvShows =
+        val layoutManagerPopularTvShows =
+            LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+
+        val layoutManagerTopRatedTvShows =
+            LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+
+        val layoutManagerLatestTvShows =
             LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
 
 
@@ -50,11 +56,27 @@ class DiscoverTvShowsFragment : Fragment() {
         recyclerViewPopularTvShows.setHasFixedSize(false)
         recyclerViewPopularTvShows.setLayoutManager(layoutManagerPopularTvShows)
 
+        val recyclerViewTopRatedTvShows = binding.topRatedShowsGrid as RecyclerView
+        recyclerViewTopRatedTvShows.setHasFixedSize(false)
+        recyclerViewTopRatedTvShows.setLayoutManager(layoutManagerTopRatedTvShows)
+
+        val recyclerViewLatestTvShows = binding.latestShowsGrid as RecyclerView
+        recyclerViewLatestTvShows.setHasFixedSize(false)
+        recyclerViewLatestTvShows.setLayoutManager(layoutManagerLatestTvShows)
+
 
         // Sets the adapter of the photosGrid RecyclerView with clickHandler lambda that
         // tells the viewModel when our property is clicked
 
         binding.popularShowsGrid.adapter = TvGridAdapter(TvGridAdapter.OnClickListener {
+            viewModel.displayTvShowDetails(it)
+        })
+
+        binding.topRatedShowsGrid.adapter = TvGridAdapter(TvGridAdapter.OnClickListener {
+            viewModel.displayTvShowDetails(it)
+        })
+
+        binding.latestShowsGrid.adapter = TvGridAdapter(TvGridAdapter.OnClickListener {
             viewModel.displayTvShowDetails(it)
         })
 

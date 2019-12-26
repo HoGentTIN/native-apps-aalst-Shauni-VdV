@@ -22,22 +22,86 @@
                 android:layout_height="match_parent"
                 tools:context=".MainActivity">
 
-                <!-- Popular TV Shows -->
+
+                <!-- Popular Shows -->
                 <TextView
-                    style="@style/subtitle"
                     android:id="@+id/popular_shows_textView"
+                    style="@style/subtitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Popular TV-Shows"
+                    android:lineSpacingExtra="10sp"
+                    android:text="@string/popular"
                     android:textSize="20sp"
                     android:textStyle="bold"
-
                     app:layout_constraintBottom_toTopOf="@id/popular_shows_grid"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/popular_shows_grid"
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:adjustViewBounds="false"
+                    android:clipToPadding="false"
+                    android:padding="-10dp"
+                    app:layoutManager="LinearLayoutManager"
+                    app:layout_constraintBottom_toTopOf="@id/topRated_shows_textView"
+                    app:layout_constraintHorizontal_bias="1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/popular_shows_textView"
+                    app:listData="@{viewModel.popularTvShows}"
+                    app:spanCount="20"
+                    tools:itemCount="20"
+                    tools:listitem="@layout/movie_grid_item" />
+
+                <!-- Top rated Shows -->
+                <TextView
+                    android:id="@+id/topRated_shows_textView"
+                    style="@style/subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="-10dp"
+                    android:text="@string/topRated"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/topRated_shows_grid"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/popular_shows_grid" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/topRated_shows_grid"
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:adjustViewBounds="true"
+                    android:clipToPadding="true"
+                    android:padding="-10dp"
+                    app:layoutManager="LinearLayoutManager"
+                    app:layout_constraintBottom_toTopOf="@id/latest_shows_textView"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/topRated_shows_textView"
+                    app:listData="@{viewModel.topRatedTvShows}"
+                    app:spanCount="20"
+                    tools:itemCount="20"
+                    tools:listitem="@layout/movie_grid_item" />
+
+                <!-- Latest Shows -->
+                <TextView
+                    android:id="@+id/latest_shows_textView"
+                    style="@style/subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Latest"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/latest_shows_grid"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/topRated_shows_grid" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/latest_shows_grid"
                     android:layout_width="0dp"
                     android:layout_height="250dp"
                     android:adjustViewBounds="true"
@@ -48,8 +112,8 @@
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/popular_shows_textView"
-                    app:listData="@{viewModel.popularTvShows}"
+                    app:layout_constraintTop_toBottomOf="@id/latest_shows_textView"
+                    app:listData="@{viewModel.latestTvShows}"
                     app:spanCount="20"
                     tools:itemCount="20"
                     tools:listitem="@layout/movie_grid_item" />

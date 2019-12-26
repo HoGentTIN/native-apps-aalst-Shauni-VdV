@@ -12,4 +12,11 @@
     <string name="discover_tab_text_movie">Movies</string>
     <string name="discover_tab_text_tv">TV Shows</string>
 
+    // Categories in discover
+    <string name="popular">Popular</string>
+    <string name="topRated">Top Rated</string>
+    <string name="Latest">Latest</string>
+
+
+
 </resources>
