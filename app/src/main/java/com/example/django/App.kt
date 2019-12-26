@@ -6,12 +6,11 @@ import com.example.django.injection.component.DaggerAppComponent
 import com.example.django.injection.module.DatabaseModule
 import com.example.django.injection.module.NetworkModule
 
-class App: Application(){
+class App : Application() {
 
-    companion object{
-        lateinit var appComponent : AppComponent
+    companion object {
+        lateinit var appComponent: AppComponent
     }
-
 
     override fun onCreate() {
         super.onCreate()

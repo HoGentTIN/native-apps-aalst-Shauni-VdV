@@ -31,12 +31,12 @@ data class Movie(
     val vote_average: Double? = null,
     val vote_count: Int? = null,
     var isFavorite: Boolean
-    ): Parcelable, Searchable(MOVIE) {
+) : Parcelable, Searchable(MOVIE) {
 
-    fun getBackdrop() : String {
+    fun getBackdrop(): String {
         return "https://image.tmdb.org/t/p/w500/" + backdrop_path
     }
-    fun getImg() : String {
+    fun getImg(): String {
         return "https://image.tmdb.org/t/p/w500/" + poster_path
     }
 }

@@ -15,16 +15,14 @@ interface FavoriteDatabaseDao {
     fun deleteMovieFromFavorites(id: String)
 
     @Query("SELECT * FROM movie_table WHERE isFavorite = 1")
-    suspend fun getFavoriteMovies() : List<Movie>
-
+    suspend fun getFavoriteMovies(): List<Movie>
 
     @Query("SELECT * FROM tvshow_table WHERE isFavorite")
-    suspend fun getFavoriteTvShows() : List<TvShow>
+    suspend fun getFavoriteTvShows(): List<TvShow>
 
     @Query("UPDATE tvshow_table SET isFavorite = 1 WHERE id = :id")
     suspend fun addTvShowToFavorites(id: String)
 
     @Query("UPDATE tvshow_table SET isFavorite = 0 WHERE id = :id")
     suspend fun deleteTvShowFromFavorites(id: String)
-
 }

@@ -11,20 +11,21 @@ import com.example.django.R
 import com.example.django.databinding.FragmentTvshowDetailBinding
 import com.example.django.db.TvShowDatabase
 
-
 class DetailTvShowFragment : Fragment() {
 
     private val viewModel: DetailTvShowViewModel by lazy {
         ViewModelProviders.of(this).get(DetailTvShowViewModel::class.java)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val application = requireNotNull(activity).application
 
         val tvShowDatabase = TvShowDatabase.getInstance(requireContext())
         val tvDao = tvShowDatabase.tvShowDao
-
 
         val binding = FragmentTvshowDetailBinding.inflate(inflater)
         binding.setLifecycleOwner(this)
@@ -44,7 +45,7 @@ class DetailTvShowFragment : Fragment() {
 
         binding.favoriteButton.setOnClickListener(View.OnClickListener {
 
-            //Show is not favorite
+            // Show is not favorite
             if (!tvShow.isFavorite) {
                 Thread {
                     tvDao.addTvShowToFavorites(tvShow.id)
@@ -71,9 +72,6 @@ class DetailTvShowFragment : Fragment() {
             }
         })
 
-
         return binding.root
     }
-
-
 }

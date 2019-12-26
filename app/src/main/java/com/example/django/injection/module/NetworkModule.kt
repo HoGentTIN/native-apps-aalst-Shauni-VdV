@@ -1,26 +1,21 @@
 package com.example.django.injection.module
 
 import android.content.Context
-
 import com.example.django.BuildConfig
 import com.example.django.model.helpers.Searchable
 import com.example.django.model.helpers.SearchableDeserializer
-
 import com.example.django.network.MovieService
 import com.example.django.network.TvService
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
 import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Singleton
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
-
 
 @Module
 class NetworkModule(private val context: Context) {
@@ -35,7 +30,6 @@ class NetworkModule(private val context: Context) {
         return retrofit.create(TvService::class.java)
     }
 
-
     @Provides
     @Singleton
     internal fun provideRetrofitInterface(): Retrofit {
@@ -47,8 +41,6 @@ class NetworkModule(private val context: Context) {
             .registerTypeAdapter(Searchable::class.java, SearchableDeserializer())
             .setLenient()
             .create()
-
-
 
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
@@ -72,6 +64,4 @@ class NetworkModule(private val context: Context) {
         }
 }
 
-
-typealias AndroidPair<T,U> = androidx.core.util.Pair<T,U>
-
+typealias AndroidPair<T, U> = androidx.core.util.Pair<T, U>

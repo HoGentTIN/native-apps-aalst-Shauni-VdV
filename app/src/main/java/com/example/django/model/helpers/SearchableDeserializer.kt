@@ -2,7 +2,6 @@ package com.example.django.model.helpers
 
 import android.util.Log
 import com.example.django.App
-import com.example.django.injection.component.DaggerAppComponent
 import com.example.django.model.Movie
 import com.example.django.model.Person
 import com.example.django.model.TvShow
@@ -11,7 +10,6 @@ import com.example.django.model.helpers.Searchable.Companion.PERSON
 import com.example.django.model.helpers.Searchable.Companion.TV
 import com.google.gson.*
 import java.lang.reflect.Type
-
 
 class SearchableDeserializer : JsonDeserializer<Searchable> {
 

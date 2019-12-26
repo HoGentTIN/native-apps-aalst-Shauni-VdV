@@ -1,6 +1,5 @@
 package com.example.django.ui.fragment.about
 
-
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -13,10 +12,10 @@ import com.example.django.R
 import com.example.django.databinding.FragmentAboutBinding
 import kotlinx.android.synthetic.main.fragment_about.*
 
-
 class AboutFragment : Fragment() {
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 

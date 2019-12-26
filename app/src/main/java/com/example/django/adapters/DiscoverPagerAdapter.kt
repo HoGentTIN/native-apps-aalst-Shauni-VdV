@@ -13,7 +13,7 @@ class DiscoverPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePage
     }
 
     override fun getItem(position: Int): Fragment {
-        if( position == 0){
+        if (position == 0) {
             return DiscoverMoviesFragment()
         }
         return DiscoverTvShowsFragment()

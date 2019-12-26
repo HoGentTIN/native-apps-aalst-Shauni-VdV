@@ -17,7 +17,6 @@ import com.example.django.adapters.TvGridAdapter
 import com.example.django.databinding.FragmentDiscoverTvshowsBinding
 import com.example.django.ui.fragment.discover.DiscoverFragmentDirections
 
-
 class DiscoverTvShowsFragment : Fragment() {
 
     private val viewModel: DiscoverTvShowsViewModel by lazy {
@@ -25,22 +24,21 @@ class DiscoverTvShowsFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         Log.i("Discover", "TV Fragment created")
 
         val binding: FragmentDiscoverTvshowsBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_discover_tvshows, container, false)
-        //val binding = FragmentDiscoverBinding.inflate(inflater)
+        // val binding = FragmentDiscoverBinding.inflate(inflater)
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.lifecycleOwner = this
 
-
         // Giving the binding access to the DiscoverViewModel
         binding.viewModel = viewModel
-
 
         val layoutManagerPopularTvShows =
             LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
@@ -50,7 +48,6 @@ class DiscoverTvShowsFragment : Fragment() {
 
         val layoutManagerLatestTvShows =
             LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
-
 
         val recyclerViewPopularTvShows = binding.popularShowsGrid as RecyclerView
         recyclerViewPopularTvShows.setHasFixedSize(false)
@@ -63,7 +60,6 @@ class DiscoverTvShowsFragment : Fragment() {
         val recyclerViewLatestTvShows = binding.latestShowsGrid as RecyclerView
         recyclerViewLatestTvShows.setHasFixedSize(false)
         recyclerViewLatestTvShows.setLayoutManager(layoutManagerLatestTvShows)
-
 
         // Sets the adapter of the photosGrid RecyclerView with clickHandler lambda that
         // tells the viewModel when our property is clicked
@@ -80,9 +76,8 @@ class DiscoverTvShowsFragment : Fragment() {
             viewModel.displayTvShowDetails(it)
         })
 
-
         viewModel.navigateToSelectedTvShow.observe(this, Observer {
-            if ( null != it ) {
+            if (null != it) {
                 // Must find the NavController from the Fragment
                 this.findNavController().navigate(DiscoverFragmentDirections.showTvShowDetail(it))
                 // Tell the ViewModel we've made the navigate call to prevent multiple navigation
@@ -90,6 +85,5 @@ class DiscoverTvShowsFragment : Fragment() {
             }
         })
         return binding.root
-
     }
 }

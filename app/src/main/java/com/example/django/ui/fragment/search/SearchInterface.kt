@@ -4,7 +4,7 @@ interface SearchInterface {
 
     fun search(query: String)
 
-    companion object{
-        const val QUERY= "query"
+    companion object {
+        const val QUERY = "query"
     }
 }

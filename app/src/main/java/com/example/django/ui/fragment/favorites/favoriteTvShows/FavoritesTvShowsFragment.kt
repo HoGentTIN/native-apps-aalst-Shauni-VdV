@@ -15,15 +15,15 @@ import com.example.django.adapters.TvGridAdapter
 import com.example.django.databinding.FragmentFavoritesTvshowsBinding
 import com.example.django.ui.fragment.favorites.FavoritesFragmentDirections
 
-class FavoritesTvShowsFragment : Fragment()  {
+class FavoritesTvShowsFragment : Fragment() {
 
     private val viewModel: FavoritesTvShowsViewModel by lazy {
         ViewModelProviders.of(this).get(FavoritesTvShowsViewModel::class.java)
     }
 
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         Log.i("Favorites", "TvShow Favorites Fragment created")
@@ -34,23 +34,21 @@ class FavoritesTvShowsFragment : Fragment()  {
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.lifecycleOwner = this
 
-
         // Giving the binding access to the ViewModel
         binding.viewModel = viewModel
 
-        binding.favoriteTvshowsGrid.adapter = TvGridAdapter(TvGridAdapter.OnClickListener{
+        binding.favoriteTvshowsGrid.adapter = TvGridAdapter(TvGridAdapter.OnClickListener {
             viewModel.displayTvShowDetails(it)
         })
 
         viewModel.navigateToSelectedTvShow.observe(this, Observer {
-            if ( null != it ) {
+            if (null != it) {
                 // Must find the NavController from the Fragment
                 this.findNavController().navigate(FavoritesFragmentDirections.showTvShowDetail(it))
                 // Tell the ViewModel we've made the navigate call to prevent multiple navigation
                 viewModel.displayTvShowDetailsComplete()
             }
         })
-
 
         return binding.root
     }

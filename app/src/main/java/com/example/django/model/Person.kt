@@ -18,17 +18,17 @@ data class Person(
     val id: Int,
 
     val name: String,
-    val also_known_as : List<String>,
-    val gender : Int,
+    val also_known_as: List<String>,
+    val gender: Int,
     val biography: String,
     val popularity: Number,
     val place_of_birth: String? = null,
-    val profile_path: String?= null,
+    val profile_path: String? = null,
     val adult: Boolean? = false,
     val imdb_id: String,
     val homepage: String? = null
 
-): Parcelable, Searchable(PERSON){
+) : Parcelable, Searchable(PERSON) {
 
     fun getProfile(): String {
         return "https://image.tmdb.org/t/p/w500/$profile_path"

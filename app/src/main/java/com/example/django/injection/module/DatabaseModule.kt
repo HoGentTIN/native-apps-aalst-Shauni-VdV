@@ -6,9 +6,8 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-
 @Module
-class DatabaseModule(private val application: Context){
+class DatabaseModule(private val application: Context) {
 
     @Provides
     @Singleton
@@ -21,6 +20,4 @@ class DatabaseModule(private val application: Context){
     internal fun provideTvShowRepository(): ITvShowRepository {
         return TvShowRepository(application)
     }
-
-
 }

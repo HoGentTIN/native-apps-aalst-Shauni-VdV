@@ -1,13 +1,10 @@
 package com.example.django.ui.fragment.detail
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import com.example.django.App
-import com.example.django.R
 import com.example.django.model.Movie
 
 class DetailMovieViewModel(movie: Movie, app: Application) : AndroidViewModel(app) {
@@ -27,5 +24,4 @@ class DetailMovieViewModel(movie: Movie, app: Application) : AndroidViewModel(ap
     init {
         _selectedMovie.value = movie
     }
-
 }

@@ -8,8 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.django.App
 import com.example.django.model.Movie
 import com.example.django.model.repository.IMovieRepository
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 class FavoritesMoviesViewModel : ViewModel() {
 
@@ -19,7 +19,6 @@ class FavoritesMoviesViewModel : ViewModel() {
     }
 
     enum class ApiStatus { LOADING, ERROR, DONE }
-
 
     @Inject
     lateinit var movieRepository: IMovieRepository
@@ -47,6 +46,4 @@ class FavoritesMoviesViewModel : ViewModel() {
     fun displayMovieDetailsComplete() {
         _navigateToSelectedMovie.value = null
     }
-
-
 }

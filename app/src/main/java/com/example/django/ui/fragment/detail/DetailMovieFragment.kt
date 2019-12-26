@@ -17,9 +17,11 @@ class DetailMovieFragment : Fragment() {
         ViewModelProviders.of(this).get(DetailMovieViewModel::class.java)
     }
 
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val application = requireNotNull(activity).application
 
         val movieDatabase = MovieDatabase.getInstance(requireContext())
@@ -32,12 +34,10 @@ class DetailMovieFragment : Fragment() {
         val movie = DetailMovieFragmentArgs.fromBundle(arguments!!).selectedMovie
         val viewModelFactory = DetailMovieViewModelFactory(movie, application)
 
-
         binding.viewModel = ViewModelProviders.of(
             this, viewModelFactory).get(DetailMovieViewModel::class.java)
 
         binding.viewModel = viewModel
-
 
         // Set image if movie is favorited
         if (viewModel.movie.isFavorite) {
@@ -46,7 +46,7 @@ class DetailMovieFragment : Fragment() {
 
         binding.favoriteButton.setOnClickListener(View.OnClickListener {
 
-            //Movie is not favorite
+            // Movie is not favorite
             if (!movie.isFavorite) {
                 Thread {
                     movieDao.addMovieToFavorites(movie.id)

@@ -10,8 +10,8 @@ import com.example.django.model.TvShow
 import com.example.django.model.repository.ITvShowRepository
 import com.example.django.network.TvService
 import com.example.django.ui.fragment.discover.DiscoverViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 class DiscoverTvShowsViewModel : ViewModel() {
 
@@ -20,7 +20,6 @@ class DiscoverTvShowsViewModel : ViewModel() {
         getPopularTvShows()
         getTopRatedTvShows()
         getLatestTvShows()
-
     }
 
     enum class ApiStatus { LOADING, ERROR, DONE }
@@ -42,8 +41,6 @@ class DiscoverTvShowsViewModel : ViewModel() {
     val latestTvShows: LiveData<List<TvShow>>
         get() = _latestTvShows
 
-
-
     private val _status = MutableLiveData<DiscoverViewModel.ApiStatus>()
     val status: LiveData<DiscoverViewModel.ApiStatus>
         get() = _status
@@ -52,7 +49,7 @@ class DiscoverTvShowsViewModel : ViewModel() {
     val navigateToSelectedTvShow: LiveData<TvShow>
         get() = _navigateToSelectedTvShow
 
-    private fun getPopularTvShows(){
+    private fun getPopularTvShows() {
 
         Log.d("ViewModel", "GetPopularTvShows called")
         viewModelScope.launch {
@@ -61,7 +58,7 @@ class DiscoverTvShowsViewModel : ViewModel() {
         }
     }
 
-    private fun getTopRatedTvShows(){
+    private fun getTopRatedTvShows() {
 
         Log.d("ViewModel", "GetTopRatedTvShows called")
         viewModelScope.launch {
@@ -70,7 +67,7 @@ class DiscoverTvShowsViewModel : ViewModel() {
         }
     }
 
-    private fun getLatestTvShows(){
+    private fun getLatestTvShows() {
 
         Log.d("ViewModel", "GetTopRatedTvShows called")
         viewModelScope.launch {
@@ -78,9 +75,6 @@ class DiscoverTvShowsViewModel : ViewModel() {
             _latestTvShows.value = any.results
         }
     }
-
-
-
 
     fun displayTvShowDetails(tvShow: TvShow) {
         _navigateToSelectedTvShow.value = tvShow

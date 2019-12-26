@@ -5,7 +5,6 @@ import android.view.View
 import android.view.View.inflate
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.django.R
 import com.example.django.databinding.MovieGridItemBinding
 import com.example.django.databinding.PersonGridItemBinding
 import com.example.django.databinding.TvGridItemBinding
@@ -72,6 +71,4 @@ class SearchAdapter(var items: List<Searchable>) : RecyclerView.Adapter<Recycler
             else -> -1
         }
     }
-
-
 }

@@ -22,13 +22,11 @@ interface TvShowDatabaseDao {
     suspend fun getTvShow(id: String): TvShow?
 
     @Query("SELECT * FROM tvshow_table WHERE isFavorite = 1")
-    suspend fun getFavoriteTvShows() : List<TvShow>
+    suspend fun getFavoriteTvShows(): List<TvShow>
 
     @Query("UPDATE tvshow_table SET isFavorite = 1 WHERE id = :id")
     fun addTvShowToFavorites(id: String)
 
     @Query("UPDATE tvshow_table SET isFavorite = 0 WHERE id = :id")
     fun deleteTvShowFromFavorites(id: String)
-
-
 }

@@ -8,7 +8,6 @@ import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 import com.example.django.model.Movie
 
-
 @Dao
 interface MovieDatabaseDao {
 
@@ -19,15 +18,13 @@ interface MovieDatabaseDao {
     suspend fun getMovie(id: String): Movie?
 
     @Query("SELECT * FROM movie_table WHERE isFavorite = 1")
-    suspend fun getFavoriteMovies() : List<Movie>
+    suspend fun getFavoriteMovies(): List<Movie>
 
     @Query("UPDATE movie_table SET isFavorite = 1 WHERE id = :id")
     fun addMovieToFavorites(id: String)
 
     @Query("UPDATE movie_table SET isFavorite = 0 WHERE id = :id")
     fun deleteMovieFromFavorites(id: String)
-
-
 
     @Insert(onConflict = IGNORE)
     suspend fun insert(movie: Movie)
@@ -46,5 +43,4 @@ interface MovieDatabaseDao {
 
     @Query("DELETE FROM movie_table")
     suspend fun deleteAll()
-
    }

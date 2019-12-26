@@ -9,13 +9,10 @@ import com.example.django.db.TvShowDatabase
 import com.example.django.db.TvShowDatabaseDao
 import com.example.django.model.TvShow
 import com.example.django.network.TvService
-import com.example.django.network.response.MovieListResponse
 import com.example.django.network.response.TvListResponse
 import javax.inject.Inject
 
 class TvShowRepository(context: Context) : ITvShowRepository {
-
-
 
     init {
         App.appComponent.inject(this)
@@ -24,26 +21,23 @@ class TvShowRepository(context: Context) : ITvShowRepository {
     @Inject
     lateinit var tvService: TvService
 
-
     private val context: Context = context
     private val tvShowDatabase = TvShowDatabase.getInstance(context)
     private val tvShowDao: TvShowDatabaseDao = tvShowDatabase.tvShowDao
 
-
     override suspend fun getPopularTvShows(): TvListResponse {
         if (isInternetAvailable(context)) {
             var result = tvService.getPopularShows()
-            var showsInDao : List<TvShow> = tvShowDao.getTvShowList()!!
+            var showsInDao: List<TvShow> = tvShowDao.getTvShowList()!!
 
-            for(n in result.results!!){
-                if(!showsInDao.contains(n)){
+            for (n in result.results!!) {
+                if (!showsInDao.contains(n)) {
                     tvShowDao.insert(n)
                 }
             }
-            Log.d("DaoTV",  tvShowDao.getTvShowList()?.size.toString())
+            Log.d("DaoTV", tvShowDao.getTvShowList()?.size.toString())
 
             return result
-
         } else {
             Toast.makeText(context, "No Internet Available", Toast.LENGTH_SHORT).show()
             return TvListResponse()
@@ -54,17 +48,16 @@ class TvShowRepository(context: Context) : ITvShowRepository {
         if (isInternetAvailable(context)) {
             var result = tvService.getLatestShows()
             Log.d("results", result.results.toString())
-            var showsInDao : List<TvShow>? = tvShowDao.getTvShowList()
+            var showsInDao: List<TvShow>? = tvShowDao.getTvShowList()
 
-            for(n in result.results!!){
+            for (n in result.results!!) {
                 if (showsInDao != null) {
-                    if(!showsInDao.contains(n)){
+                    if (!showsInDao.contains(n)) {
                         tvShowDao.insert(n)
                     }
                 } else tvShowDao.insert(result.results!!)
             }
             return result
-
         } else {
             Toast.makeText(context, "No Internet Available", Toast.LENGTH_SHORT).show()
             return TvListResponse()
@@ -74,15 +67,14 @@ class TvShowRepository(context: Context) : ITvShowRepository {
     override suspend fun getTopRatedTvShows(): TvListResponse {
         if (isInternetAvailable(context)) {
             var result = tvService.getTopRatedShows()
-            var showsInDao : List<TvShow> = tvShowDao.getTvShowList()!!
+            var showsInDao: List<TvShow> = tvShowDao.getTvShowList()!!
 
-            for(n in result.results!!){
-                if(!showsInDao.contains(n)){
+            for (n in result.results!!) {
+                if (!showsInDao.contains(n)) {
                     tvShowDao.insert(n)
                 }
             }
             return result
-
         } else {
             Toast.makeText(context, "No Internet Available", Toast.LENGTH_SHORT).show()
             return TvListResponse()
@@ -95,14 +87,13 @@ class TvShowRepository(context: Context) : ITvShowRepository {
 
     override suspend fun insertTvShowDatabase(list: List<TvShow>) {
             tvShowDao.insert(list)
-
     }
 
     internal fun isInternetAvailable(context: Context): Boolean {
         val mConMgr = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-        return (mConMgr.activeNetworkInfo != null
-                && mConMgr.activeNetworkInfo!!.isAvailable
-                && mConMgr.activeNetworkInfo!!.isConnected)
+        return (mConMgr.activeNetworkInfo != null &&
+                mConMgr.activeNetworkInfo!!.isAvailable &&
+                mConMgr.activeNetworkInfo!!.isConnected)
     }
 }

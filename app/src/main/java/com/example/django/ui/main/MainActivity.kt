@@ -1,9 +1,9 @@
 package com.example.django.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
@@ -16,16 +16,14 @@ import io.reactivex.Observable
 import io.reactivex.ObservableOnSubscribe
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-
     private lateinit var navHostFragment: NavHostFragment
-    private lateinit var navController : NavController
+    private lateinit var navController: NavController
     val disposables = CompositeDisposable()
-
 
     private val searchViewModel by lazy {
         ViewModelProviders.of(this).get(SearchViewModel::class.java)
@@ -38,9 +36,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         bottom_nav_view.setupWithNavController((navHostFragment.navController))
-
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -66,7 +62,7 @@ class MainActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { text ->
                 search(text)
-            }.let{
+            }.let {
                 disposables.add(it)
             }
 

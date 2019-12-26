@@ -23,11 +23,11 @@ data class TvShow(
     val poster_path: String? = null,
     var isFavorite: Boolean = false
 
-) : Parcelable, Searchable(TV){
+) : Parcelable, Searchable(TV) {
     fun getImg(): String {
         return "https://image.tmdb.org/t/p/w500/" + poster_path
     }
-    fun getBackdrop() : String {
+    fun getBackdrop(): String {
         return "https://image.tmdb.org/t/p/w500/" + backdrop_path
     }
 }

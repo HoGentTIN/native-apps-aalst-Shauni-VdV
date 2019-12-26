@@ -13,7 +13,7 @@ class FavoritesPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePag
     }
 
     override fun getItem(position: Int): Fragment {
-        if( position == 0){
+        if (position == 0) {
             return FavoritesMoviesFragment()
         }
         return FavoritesTvShowsFragment()

@@ -1,6 +1,5 @@
 package com.example.django.model.repository
 
-import com.example.django.model.Movie
 import com.example.django.model.TvShow
 import com.example.django.network.response.TvListResponse
 
@@ -20,5 +19,4 @@ interface ITvShowRepository {
     suspend fun getFavoriteTvShows(): List<TvShow>
 
     suspend fun insertTvShowDatabase(list: List<TvShow>)
-
 }

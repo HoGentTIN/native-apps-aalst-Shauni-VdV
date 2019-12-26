@@ -4,12 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import com.example.django.App
-import com.example.django.R
-import com.example.django.model.Movie
 import com.example.django.model.Person
-import com.example.django.model.TvShow
 
 class DetailPersonViewModel(person: Person, app: Application) : AndroidViewModel(app) {
 
@@ -27,5 +23,4 @@ class DetailPersonViewModel(person: Person, app: Application) : AndroidViewModel
     init {
         _selectedPerson.value = person
     }
-
 }
