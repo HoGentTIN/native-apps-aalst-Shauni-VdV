@@ -1,5 +1,6 @@
 package com.example.django.ui.fragment.favorites.favoriteTvShows
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -35,6 +36,7 @@ class FavoritesTvShowsViewModel : ViewModel() {
         viewModelScope.launch {
             var result = tvShowRepository.getFavoriteTvShows()
             _favoriteShows.value = result
+            Log.d("FavoriteShows", result.size.toString())
         }
     }
 

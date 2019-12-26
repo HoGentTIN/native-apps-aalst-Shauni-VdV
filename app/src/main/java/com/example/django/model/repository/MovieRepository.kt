@@ -13,7 +13,6 @@ import android.util.Log
 import android.widget.Toast
 
 
-@Suppress("DEPRECATION")
 class MovieRepository(context : Context) : IMovieRepository {
 
     @Inject

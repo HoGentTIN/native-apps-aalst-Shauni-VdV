@@ -26,8 +26,6 @@ class DetailMovieViewModel(movie: Movie, app: Application) : AndroidViewModel(ap
     // Initialize the _selectedMovie MutableLiveData
     init {
         _selectedMovie.value = movie
-        Log.d("IsFavorite", movie.isFavorite.toString())
-        Log.d("Id", movie.id)
     }
 
 }

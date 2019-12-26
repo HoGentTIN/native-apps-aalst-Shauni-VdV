@@ -12,6 +12,7 @@ import com.example.django.model.TvShow
 
 class DetailTvShowViewModel(tvShow: TvShow, app: Application) : AndroidViewModel(app) {
 
+    var tvShow = tvShow
     init {
         App.appComponent.inject(this)
     }

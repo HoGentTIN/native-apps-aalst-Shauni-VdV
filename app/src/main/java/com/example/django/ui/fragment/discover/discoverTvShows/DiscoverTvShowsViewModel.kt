@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.django.App
 import com.example.django.model.TvShow
+import com.example.django.model.repository.ITvShowRepository
 import com.example.django.network.TvService
 import com.example.django.ui.fragment.discover.DiscoverViewModel
 import kotlinx.coroutines.launch
@@ -24,6 +25,8 @@ class DiscoverTvShowsViewModel : ViewModel() {
 
     @Inject
     lateinit var tvService: TvService
+    @Inject
+    lateinit var tvShowRepository: ITvShowRepository
 
     private val _popularTvShows = MutableLiveData<List<TvShow>>()
     val popularTvShows: LiveData<List<TvShow>>
@@ -43,10 +46,12 @@ class DiscoverTvShowsViewModel : ViewModel() {
 
         Log.d("ViewModel", "GetPopularTvShows called")
         viewModelScope.launch {
-            var any = tvService.getPopularShows()
+            var any = tvShowRepository.getPopularTvShows()
             _popularTvShows.value = any.results
         }
     }
+
+
 
 
     fun displayTvShowDetails(tvShow: TvShow) {
