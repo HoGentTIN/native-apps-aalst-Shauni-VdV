@@ -15,16 +15,15 @@ class MovieDatabaseTest {
 
     private lateinit var movieDao: MovieDatabaseDao
     private lateinit var testMovie: Movie
-    private lateinit var testMovie2 : Movie
-    private lateinit var movieDatabase : MovieDatabase
+    private lateinit var testMovie2: Movie
+    private lateinit var movieDatabase: MovieDatabase
 
     @Before
-    fun setUp(){
+    fun setUp() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         movieDatabase = Room.inMemoryDatabaseBuilder(context, MovieDatabase::class.java)
             .allowMainThreadQueries()
             .build()
-
 
         movieDao = movieDatabase.movieDao
 
@@ -44,12 +43,12 @@ class MovieDatabaseTest {
     }
 
     @After
-    fun closeDb(){
+    fun closeDb() {
         movieDatabase.close()
     }
 
     @Test
-    fun insertMovie_GetMovie_ReturnsMovie(){
+    fun insertMovie_GetMovie_ReturnsMovie() {
         runBlocking {
             movieDao.insert(testMovie)
             val movie = movieDao.getMovie(testMovie.id)
@@ -58,17 +57,16 @@ class MovieDatabaseTest {
     }
 
     @Test
-    fun insertMovie_CorrectAmountOfMoviesInDatabase(){
+    fun insertMovie_CorrectAmountOfMoviesInDatabase() {
         runBlocking {
             movieDao.insert(testMovie)
             movieDao.insert(testMovie2)
             assertEquals(movieDao.getMovieList()?.count(), 2)
-
         }
     }
 
     @Test
-    fun duplicateInsert_DoesNotAddDuplicate(){
+    fun duplicateInsert_DoesNotAddDuplicate() {
         runBlocking {
             movieDao.insert(testMovie)
             movieDao.insert(testMovie)
@@ -77,7 +75,7 @@ class MovieDatabaseTest {
     }
 
     @Test
-    fun addToFavorites_ReturnFavoriteMovies(){
+    fun addToFavorites_ReturnFavoriteMovies() {
         runBlocking {
             movieDao.insert(testMovie2)
             movieDao.insert(testMovie)

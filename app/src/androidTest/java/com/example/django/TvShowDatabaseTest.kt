@@ -15,16 +15,15 @@ class TvShowDatabaseTest {
 
     private lateinit var tvDao: TvShowDatabaseDao
     private lateinit var testShow: TvShow
-    private lateinit var testShow2 : TvShow
+    private lateinit var testShow2: TvShow
     private lateinit var tvDatabase: TvShowDatabase
 
     @Before
-    fun setUp(){
+    fun setUp() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         tvDatabase = Room.inMemoryDatabaseBuilder(context, TvShowDatabase::class.java)
             .allowMainThreadQueries()
             .build()
-
 
         tvDao = tvDatabase.tvShowDao
 
@@ -44,12 +43,12 @@ class TvShowDatabaseTest {
     }
 
     @After
-    fun closeDb(){
+    fun closeDb() {
         tvDatabase.close()
     }
 
     @Test
-    fun insertShow_GetShow_ReturnsCorrectShow(){
+    fun insertShow_GetShow_ReturnsCorrectShow() {
         runBlocking {
             tvDao.insert(testShow)
             val show = tvDao.getTvShow(testShow.id)
@@ -58,17 +57,16 @@ class TvShowDatabaseTest {
     }
 
     @Test
-    fun insertShow_CorrectAmountOfShowsInDatabase(){
+    fun insertShow_CorrectAmountOfShowsInDatabase() {
         runBlocking {
             tvDao.insert(testShow)
             tvDao.insert(testShow2)
             assertEquals(tvDao.getTvShowList()?.count(), 2)
-
         }
     }
 
     @Test
-    fun duplicateInsert_DoesNotAddDuplicate(){
+    fun duplicateInsert_DoesNotAddDuplicate() {
         runBlocking {
             tvDao.insert(testShow)
             tvDao.insert(testShow)
@@ -77,7 +75,7 @@ class TvShowDatabaseTest {
     }
 
     @Test
-    fun addToFavorites_ReturnFavoriteShows(){
+    fun addToFavorites_ReturnFavoriteShows() {
         runBlocking {
             tvDao.insert(testShow2)
             tvDao.insert(testShow)
